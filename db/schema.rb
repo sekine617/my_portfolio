@@ -10,18 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_020951) do
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_furigana", null: false
-    t.string "first_hurigana", null: false
-    t.string "password_digest", null: false
-    t.string "email", null: false
-    t.string "phone_number", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_201_225_020_951) do
+  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'last_name', null: false
+    t.string 'first_name', null: false
+    t.string 'last_hurigana', null: false
+    t.string 'first_hurigana', null: false
+    t.string 'password_digest', null: false
+    t.string 'email', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end

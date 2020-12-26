@@ -5,7 +5,7 @@
 #  id              :bigint           not null, primary key
 #  last_name       :string(255)      not null
 #  first_name      :string(255)      not null
-#  last_furigana   :string(255)      not null
+#  last_hurigana   :string(255)      not null
 #  first_hurigana  :string(255)      not null
 #  password_digest :string(255)      not null
 #  email           :string(255)      not null
