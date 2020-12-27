@@ -4,9 +4,22 @@ ja:
       user:
         last_name: 姓
         first_name: 名
-        last_hurigana: 姓（フリガナ）
-        first_hurigana: 名（フリガナ）
+        last_hurigana: セイ
+        first_hurigana: メイ
         password: パスワード
         password_confirmation: パスワード（確認）
         email: メールアドレス
-        phone_number: 電話番号
+      board:
+        name: 名前
+        title: タイトル
+        body: 本文
+      comment:
+        name: 名前
+        comment: コメント
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate: ...

@@ -24,14 +24,14 @@ class User < ApplicationRecord
             presence: true,
             format: {
               with: /\A[\p{katakana}\p{blank}ー－]+\z/,
-              message: 'はカタカナで入力して下さい。'
+              message: 'はカタカナで入力して下さい'
             }
 
   validates :first_hurigana,
             presence: true,
             format: {
               with: /\A[\p{katakana}\p{blank}ー－]+\z/,
-              message: 'はカタカナで入力して下さい。'
+              message: 'はカタカナで入力して下さい'
             }
 
   validates :password,
