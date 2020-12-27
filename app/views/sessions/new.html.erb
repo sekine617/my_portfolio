@@ -1,4 +1,6 @@
-<h1>ログイン</h1>
+<div class="card">
+  <h2 class="card-header">ユーザー登録</h2>
+  <div class="card-body d-flex align-items-center">
 
 <%= form_with scope: :session, url: login_path do |f| %>
   <div class="form-group">
@@ -11,3 +13,6 @@
   </div>
   <%= f.submit 'ログイン', class: 'btn btn-primary' %>
 <% end %>
+
+</div>
+</div>
