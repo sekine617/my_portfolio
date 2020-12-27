@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :logged_in_user, only:[:me]
   def new
     @user = User.new(flash[:user])
   end
@@ -17,7 +18,8 @@ class UsersController < ApplicationController
   end
 end
 
-  def me; end
+  def me
+  end
 
   private
 
