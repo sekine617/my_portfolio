@@ -14,6 +14,7 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
+  has_many :reviews, dependent: :destroy
   has_secure_password
 
   validates :last_name, presence: true
