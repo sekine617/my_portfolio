@@ -7,4 +7,8 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new(flash[:product])
   end
+
+  def show
+    @product = Product.find(params[:id])
+  end
 end
