@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     if @review.save
       flash[:notice] = 'レビューを投稿しました'
-      redirect_to product_reviews_path(@review.product)
+      redirect_to @review.product
     else 
       redirect_to :back, flash: {
         review: @review,
@@ -15,6 +15,11 @@ class ReviewsController < ApplicationController
       }
       end
   end
+
+  def show
+    @review = Review.new(product_id: @product.id)
+  end
+
 
   private
   def review_params

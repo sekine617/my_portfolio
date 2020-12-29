@@ -10,23 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_134736) do
+ActiveRecord::Schema.define(version: 2020_12_29_045616) do
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
-    t.text "image", null: false
+    t.string "image", null: false
     t.text "description", null: false
+    t.bigint "shop_id"
     t.integer "quantity_per_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_products_on_shop_id"
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "product_id"
-    t.string "comment"
-    t.integer "rate"
+    t.string "comment", null: false
+    t.integer "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
@@ -34,13 +36,14 @@ ActiveRecord::Schema.define(version: 2020_12_28_134736) do
   end
 
   create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone_number"
-    t.string "opening_hours"
-    t.string "address"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone_number", null: false
+    t.string "opening_hours", null: false
+    t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_shops_on_email", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,12 +51,14 @@ ActiveRecord::Schema.define(version: 2020_12_28_134736) do
     t.string "first_name", null: false
     t.string "last_hurigana", null: false
     t.string "first_hurigana", null: false
-    t.string "password_digest", null: false
     t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "reviews", "shops"
+  add_foreign_key "products", "shops"
+  add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end
