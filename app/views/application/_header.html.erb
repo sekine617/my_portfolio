@@ -6,8 +6,11 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
     <form class="form-inline mt-2 mt-md-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+      <%= search_form_for @search do |f| %>
+      <%= f.search_field :name_cont , class:'form-control mr-sm-2' %>
+      <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
+      <% end %>
     </form>
 
     
