@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :current_user
+  before_action :set_search
   include SessionsHelper
 
   private
@@ -14,5 +15,10 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       redirect_to login_url
     end
+  end
+
+  def set_search
+    @search = Product.ransack(params[:q])
+    @results = @search.result
   end
 end

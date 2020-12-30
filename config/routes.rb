@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :products do
     resources :reviews, only: %i[index create]
+    resources :likes, only: %i[create destroy]
   end
+  
+  
 end

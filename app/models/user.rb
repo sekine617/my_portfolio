@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_secure_password
+  has_many :likes, dependent: :destroy
+  #has_many :like_products, through: :likes, source: :product
 
   validates :last_name, presence: true
 
@@ -26,4 +28,8 @@ class User < ApplicationRecord
   validates :email,
             presence: true,
             uniqueness: true
+
+  def already_liked?(product)
+    self.likes.exists?(product_id: product.id)
+  end
 end

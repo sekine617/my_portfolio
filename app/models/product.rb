@@ -1,6 +1,9 @@
 class Product < ApplicationRecord
   belongs_to :shop
   has_many :reviews, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  #has_many :users, through: :likes
+  
 
   def avg_score
     unless self.reviews.empty?
@@ -17,4 +20,9 @@ def review_score_percentage
         0.0
     end
 end
+
+def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
+
 end
