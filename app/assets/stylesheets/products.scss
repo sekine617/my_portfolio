@@ -30,5 +30,19 @@
     white-space: nowrap !important;;
   }
 
+  .product-img {
+    position: relative;
+    .like-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        .far {
+            color: rgba(55, 55, 55, 0.544);
+        }
+    }
+  }
+
+  
+
 
 

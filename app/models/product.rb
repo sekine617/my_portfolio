@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   belongs_to :shop
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
-  #has_many :users, through: :likes
+  has_many :users, through: :likes
   
 
   def avg_score

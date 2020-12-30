@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only: %i[index create]
     #resources :likes, only: %i[create destroy]
-    post "likes/create" => "likes#create"
-    delete "likes/destroy" => "likes#destroy"
+    post 'add' => 'likes#create'
+    delete '/add' => 'likes#destroy'
   end
   
   
