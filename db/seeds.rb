@@ -20,4 +20,15 @@ if Rails.env == 'development'
     (1..5).each do |i|
         Product.create(name: "フルーツタルト", price: 450, description: "メロン、ブルーベリー、イチゴ、オレンジ、キウイを使用", image: "img04.jpeg", quantity_per_day: i, shop_id: i)
     end
+
+    Category.create([
+        {name: 'チョコレート'},
+        {name: 'フルーツ'},
+        {name: 'タルト'},
+        {name: 'デコレーションケーキ'},
+        {name: 'カットケーキ'},
+        {name: 'イチゴ'},
+        {name: '生クリーム'},
+        {name: 'カスタードクリーム'},
+    ])
 end
