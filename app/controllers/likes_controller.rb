@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
     before_action :logged_in_user
-    before_action :set_like
+    #before_action :set_like
 
     # def create
     #     user = @current_user
