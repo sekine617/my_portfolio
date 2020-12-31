@@ -1,0 +1,13 @@
+<h1>オーナーでログイン</h1>
+
+<%= form_with scope: :session, url: login_shop_path do |f| %>
+  <div class="form-group">
+    <%= f.label :email, '店舗メールアドレス' %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, 'パスワード' %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <%= f.submit 'ログイン', class: 'btn btn-primary' %>
+<% end %>

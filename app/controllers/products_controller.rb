@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :logged_in_shop, only:[:create]
+  before_action :logged_in_shop, {only: %i[:create :new]}
   def index
     #@products = params[:tag_id].present? ? Tag.find(params[:tag_id]).products : Product.all
     @products = @results.page(params[:page])
