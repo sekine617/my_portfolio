@@ -15,13 +15,13 @@
   </div>
   <div class="form-group">
     <%= f.label :image, '商品画像' %>
-    <%= f.file_field :image %>
+    <%= f.text_field :image, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :description, '商品説明' %>
     <%= f.text_area :description, class: 'form-control', rows: 10 %>
   </div>
-<%= f.hidden_field :shop_id, value: @current_shop.id %>
+<%= f.hidden_field :shop_id, value: 1 %>
    <div class="form-group">
     <span>タグ</span>
     <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>

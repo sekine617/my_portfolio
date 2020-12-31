@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :logged_in_shop, {only: %i[:create :new]}
   def index
     #@products = params[:tag_id].present? ? Tag.find(params[:tag_id]).products : Product.all
     @products = @results.page(params[:page])
@@ -24,6 +23,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    binding.pry
     @review = Review.new
     @reviews = @product.reviews.limit(5)
   end
