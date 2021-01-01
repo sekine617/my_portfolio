@@ -1,35 +1,39 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
+  before_action :current_shop
+  before_action :require_sign_in!
+  helper_method :signed_in?
+  skip_before_action :require_sign_in!, only: [:new, :create]
+  before_action :set_shop, only: [:create]
   def new
   end
-  
+
   def create
-   user = User.find_by(email: params[:session][:email])
-   if user && user.authenticate(params[:session][:password])
-    session[:user_id] = user.id
-    redirect_to mypage_path
-   else
-    render 'home/index'
-   end
-  end
-
-  def destroy
-   session.delete(:user_id)
-   redirect_to root_path
-  end
-
-  def shop_create
-    shop = Shop.find_by(email: params[:session][:email])
-    if shop && shop.authenticate(params[:session][:password])
-     session[:shop_id] = shop.id
-     redirect_to mypage_path
+    if @shop.authenticate(session_params[:password])
+      sign_in(@shop)
+      redirect_to root_path
     else
-     render 'shop/me'
+      flash.now[:danger] = t('.flash.invalid_password')
+     render 'home/index'
     end
    end
  
-   def shop_destroy
-    session.delete(:shop_id)
+   def destroy
+    cookies.delete(:shop_remember_token)
     redirect_to root_path
    end
+
+   private
+
+    def set_shop
+      @shop = Shop.find_by!(email: session_params[:email])
+    rescue
+      flash.now[:danger] = t('.flash.invalid_email')
+      render action: 'new'
+    end
+
+    def session_params
+      params.require(:session).permit(:auth_id, :password)
+    end
 
 end

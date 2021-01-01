@@ -1,7 +1,14 @@
 class Shop < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-    has_many :products, dependent: :destroy
+  has_many :products, dependent: :destroy
+  has_secure_password validations: true
+
+  def self.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def self.encrypt(token)
+    Digest::SHA256.hexdigest(token.to_s)
+  end
+
+  validates :mail, presence: true, uniqueness: true
 end

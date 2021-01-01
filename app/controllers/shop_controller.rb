@@ -1,4 +1,5 @@
 class ShopController < ApplicationController
+  skip_before_action :require_sign_in!, only: [:new, :create]
     def new
         @shop = Shop.new(flash[:shop])
     end
@@ -22,6 +23,6 @@ class ShopController < ApplicationController
       private
 
   def shop_params
-    params.require(:shop).permit(:last_name, :email)
+    params.require(:shop).permit(:name:, :email, :auth_id, :password, :password_confirmation)
   end
 end
