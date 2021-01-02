@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
-  def index
-  end
+  def index; end
 
   def create
     @review = Review.new(review_params)
@@ -9,20 +8,20 @@ class ReviewsController < ApplicationController
     if @review.save
       flash[:notice] = 'レビューを投稿しました'
       redirect_to @review.product
-    else 
+    else
       redirect_to :back, flash: {
         review: @review,
         error_messages: @review.errors.full_messages
       }
-      end
+    end
   end
 
   def show
     @review = Review.new(product_id: @product.id)
   end
 
-
   private
+
   def review_params
     params.require(:review).permit(:product_id, :rate, :comment)
   end

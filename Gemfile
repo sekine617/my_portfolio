@@ -36,13 +36,13 @@ gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
-gem 'jquery-rails'
-gem 'rails-i18n'
-gem 'kaminari'
-gem 'ransack'
 gem 'carrierwave'
-gem 'mini_magick'
 gem 'devise'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'rails-i18n'
+gem 'ransack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,12 +55,12 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'annotate'
+  gem 'factory_bot_rails'
   gem 'pry-byebug'
+  gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
 end
 
 group :test do

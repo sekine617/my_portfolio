@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    #@products = params[:tag_id].present? ? Tag.find(params[:tag_id]).products : Product.all
+    # @products = params[:tag_id].present? ? Tag.find(params[:tag_id]).products : Product.all
     @products = @results.page(params[:page])
   end
 
@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
+    binding.pry
     if product.save
       flash[:notice] = "「#{product.name}」を作成しました"
       redirect_to product
@@ -28,8 +29,8 @@ class ProductsController < ApplicationController
   end
 
   private
-  def product_params
-    params.require(:product).permit(:name, :price, :image, :description, :shop_id, :quantity_per_day, category_ids: [])
-  end
 
+  def product_params
+    params.require(:product).permit(:name, :price, :image, :description, :shop_id, :quantity_per_day, category_ids:[])
+  end
 end

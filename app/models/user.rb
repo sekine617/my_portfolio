@@ -32,6 +32,6 @@ class User < ApplicationRecord
             uniqueness: true
 
   def already_liked?(product)
-    self.likes.exists?(product_id: product.id)
+    likes.exists?(product_id: product.id)
   end
 end

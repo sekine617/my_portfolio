@@ -10,10 +10,11 @@
         <h2 class="card-title"><%= @product.name %></h2>
         </div>
         <div class="col-md-2">
-        <div class="like-btn-show mr-4" id="like-btn-<%= @product.id %>">
+         <div class="like-btn-show mr-4" id="like-btn-<%= @product.id %>">
                 <%= render 'likes/like', product: @product %>
+         </div>
         </div>
-        </div>
+
 </div>
         <hr>
         <p class="card-text"><%= @product.description %></p>
