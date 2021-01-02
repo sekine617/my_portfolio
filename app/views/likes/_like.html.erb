@@ -1,4 +1,5 @@
 
+<% if current_user %>
  <% if current_user.already_liked?(product) %>
    <%= link_to(product_add_path(product), method: :delete, remote: true, id: :"like-button-#{product.id}") do %>
        <i class="fa-lg fas fa-heart icon-btn liked"></i>
@@ -8,3 +9,8 @@
        <i class="fa-lg far fa-heart icon-btn not-like"></i>
    <% end %>
 <% end %> 
+<% else %>
+   <%= link_to new_user_session_path do %>
+       <i class="fa-lg far fa-heart icon-btn not-like"></i>
+   <% end %>
+<% end %>

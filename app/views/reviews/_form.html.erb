@@ -2,7 +2,7 @@
 
 <div class="rating-box mt-3">
 <div class="p-review__formBox">
-  <p class="p-review__formTitle">コメント記入</p>
+  <h5 class="p-review__formTitle">レビュー投稿</h5>
   <%= form_with model: review, url: product_reviews_path(product), local: true do |f| %>
     <%= f.hidden_field :product_id %>
     <div class="form-group">

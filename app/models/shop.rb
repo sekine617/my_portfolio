@@ -10,5 +10,5 @@ class Shop < ApplicationRecord
     Digest::SHA256.hexdigest(token.to_s)
   end
 
-  validates :mail, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
 end

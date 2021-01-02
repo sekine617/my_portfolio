@@ -23,7 +23,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    binding.pry
     @review = Review.new
     @reviews = @product.reviews.limit(5)
   end
