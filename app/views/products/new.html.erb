@@ -1,4 +1,10 @@
-<div class="d-flex align-items-center">
-  <h1>商品登録</h1>
+<div class="center-block">
+<div class="card">
+  <div class="card-header">
+    <h3>商品登録</h3>
+  </div>
+  <div class="card-body mx-auto">
+    <%= render partial: 'form', locals: { product: @product } %>
+  </div>
 </div>
-<%= render partial: 'form', locals: { product: @product } %>
+</div>

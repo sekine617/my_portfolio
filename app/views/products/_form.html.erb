@@ -1,6 +1,6 @@
 <%= render 'shared/error_messages' %>
 
-<%= form_with model: @product do |f| %>
+<%= form_with model: product,local: true do |f| %>
   <div class="form-group">
     <%= f.label :name, '商品名' %>
     <%= f.text_field :name, class: 'form-control' %>
@@ -15,7 +15,7 @@
   </div>
   <div class="form-group">
     <%= f.label :image, '商品画像' %>
-    <%= f.text_field :image, class: 'form-control' %>
+    <%= f.file_field :image, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :description, '商品説明' %>
@@ -23,15 +23,18 @@
   </div>
 <%= f.hidden_field :shop_id, value: 1 %>
    <div class="form-group">
-    <span>タグ</span>
-    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
-      <div class="form-check">
-        <%= category.label class: 'form-check-label' do %>
-          <%= category.check_box class: 'form-check-input' %>
-          <%= category.text %>
+    <span>カテゴリーを登録</span>
+    <div class="card" style="width: 30rem; ">
+     <div class="card-body">
+    <% @tags.each do |tag| %>
+          <span class="badge badge-light">
+          <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
+          <%= f.label " #{tag.name}(#{tag.taggings_count})" %>
+          </span>
         <% end %>
-      </div>
-    <% end %>
-   </div>
+     </div>
+    </div>    
+</div>
+
   <%= f.submit '保存', class: 'btn btn-primary' %>
 <% end %>

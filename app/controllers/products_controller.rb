@@ -1,7 +1,13 @@
 class ProductsController < ApplicationController
+  before_action :set_tags
   def index
-    # @products = params[:tag_id].present? ? Tag.find(params[:tag_id]).products : Product.all
+    @product = Product.all
+    if params[:tag_name]
+      @tag_results = Product.tagged_with(params[:tag_name])
+      @products = @tag_results.page(params[:page])
+    else
     @products = @results.page(params[:page])
+    end
   end
 
   def new
@@ -10,9 +16,8 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
-    binding.pry
     if product.save
-      flash[:notice] = "「#{product.name}」を作成しました"
+      #flash[:notice] = "「#{product.name}」を作成しました"
       redirect_to product
     else
       redirect_to :back, flash: {
@@ -30,7 +35,11 @@ class ProductsController < ApplicationController
 
   private
 
+  def set_tags
+    @tags = ActsAsTaggableOn::Tag.all
+  end
+
   def product_params
-    params.require(:product).permit(:name, :price, :image, :description, :shop_id, :quantity_per_day, category_ids:[])
+    params.require(:product).permit(:name, :price, :image, :description, :shop_id, :quantity_per_day, :tag_list, tag_list: [])
   end
 end

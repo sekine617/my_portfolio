@@ -26,9 +26,6 @@
     font-size: 16px;
   }
 
-  .card {
-    white-space: nowrap !important;;
-  }
 
   .product-img {
     position: relative;
@@ -50,6 +47,15 @@
         color: rgba(55, 55, 55, 0.544);
     }
 }
+
+.index-img{
+    object-fit: cover;
+}
+
+.show-img {
+    object-fit: cover;
+}
+
   
 
 

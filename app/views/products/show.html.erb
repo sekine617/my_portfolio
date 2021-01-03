@@ -1,7 +1,11 @@
 <div class="mb-4 mt-md-5" style="width: 100%;">
   <div class="row">
     <div class="col-md-6">
-      <img src="..." class="card-img" alt="...">
+       <% if @product.image? %>
+        <%= image_tag @product.image.url, :width => '100%', :height => '100%', class: 'show-img'%>
+       <% else %>
+        <%= image_tag "/assets/img2.jpeg", :width => '100%', :height => '225' ,class: 'show-img'%>
+       <% end %>
     </div>
     <div class="col-md-6">
       <div class="card-body">
@@ -17,7 +21,7 @@
 
 </div>
         <hr>
-        <p class="card-text"><%= @product.description %></p>
+        <p class="card-text"><%= simple_format(@product.description) %></p>
         <hr>
         <h2 class="card-title">¥<%= @product.price %></h2>
 
@@ -52,7 +56,7 @@
 <section class="section mt-6">
     <div class="columns is-centered">
       <div class="column is-5">
-        <div class="card card-nowrap mb-6">
+        <div class="card card-nowrap mb-6" style="white-space: nowrap !important;">
           <header class="card-header">
             <p class="card-header-title">
               <%= @product.name %>
@@ -69,7 +73,7 @@
           </header>
           <div class="card-content">
 <% @reviews.each do |review| %>
-    <div class="card">
+    <div class="card" style="white-space: nowrap !important;">
       <div class="card-body">
         <h5 class="card-title">
         <div class="star-rating mb-2">

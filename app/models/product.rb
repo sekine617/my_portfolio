@@ -1,11 +1,12 @@
 class Product < ApplicationRecord
-  # mount_uploader :image, ImageUploader
+  mount_uploader :image, ImageUploader
+  acts_as_taggable
   belongs_to :shop
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
-  has_many :product_category_relations, dependent: :destroy
-  has_many :category, through: :product_category_relations
+  #has_many :product_category_relations, dependent: :destroy
+  #has_many :category, through: :product_category_relations
 
   def avg_score
     if reviews.empty?
@@ -26,4 +27,12 @@ class Product < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
+
+  validates :name, presence: true
+  validates :price, presence: true, numericality: { only_integer: true }
+  validates :image, presence: true
+  validates :description, presence: true
+  validates :quantity_per_day, 
+              presence: true,
+              numericality: { only_integer: true }
 end

@@ -14,26 +14,33 @@ if Rails.env == 'development'
   Shop.create!(name: 'ラミティエル', email: 'lamitiel@gmail.com', auth_id: '12345678', password: '87654321',
                phone_number: '0120-000-000', opening_hours: '10:00~19:00', address: '東京都葛飾区新宿9丁目47 20番10号')
 
-  Category.create!([
-                    { name: 'チョコレート' },
-                    { name: 'フルーツ' },
-                    { name: 'タルト' },
-                    { name: 'デコレーションケーキ' },
-                    { name: 'カットケーキ' },
-                    { name: 'イチゴ' },
-                    { name: '生クリーム' },
-                    { name: 'カスタードクリーム' }
-                  ])
+#   Category.create!([
+#                     { name: 'チョコレート' },
+#                     { name: 'フルーツ' },
+#                     { name: 'タルト' },
+#                     { name: 'デコレーションケーキ' },
+#                     { name: 'カットケーキ' },
+#                     { name: 'イチゴ' },
+#                     { name: '生クリーム' },
+#                     { name: 'カスタードクリーム' }
+#                   ])
+
+                  array = %w(チョコレート フルーツ タルト デコレーションケーキ カットケーキ イチゴ 生クリーム カスタードクリーム)
+                  array.each{ |tag|
+                    tag_list = ActsAsTaggableOn::Tag.new
+                    tag_list.name = tag
+                    tag_list.save
+                  }
 
 #   (1..5).each do |i|
 #     Product.create!(name: 'モンブラン', price: 600, description: '国産栗を使用したモンブラン', image: 'img04.jpeg', quantity_per_day: i,
 #                     shop_id: 1, category_ids: [1])
 #   end
 
-(1..5).each do |i|
-    Product.create!(name: 'チョコケーキ', price: 600, description: '国産栗を使用したモンブラン', image: 'img04.jpeg', quantity_per_day: 1,
-                    shop_id: 1, category_ids: [1, 2])
-  end
+# (1..5).each do |i|
+#     Product.create!(name: 'チョコケーキ', price: 600, description: '国産栗を使用したモンブラン', image: 'img04.jpeg', quantity_per_day: 1,
+#                     shop_id: 1, category_ids: [1, 2])
+#   end
 
 # Product.all.ids.sort.each do |product_id|
 #     Category.all.ids.sort.each do |category_id|
