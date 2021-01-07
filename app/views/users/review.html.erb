@@ -1,0 +1,38 @@
+  <%= render partial: 'menu', locals: { user: @user } %>
+<div class="py-5">
+     <% if @reviews.present? %>
+    <% @reviews.each do |review| %>
+      <% product = Product.find_by(id: review.product_id) %>
+      <div class="card mb-3">
+       <div class="row no-gutters">
+        <div class="col-md-4">
+        <%= image_tag product.image.url, :width => '100%', :height => '225', class: 'index-img' %>
+       </div>
+       <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name %></h5>
+        <h5 class="card-title ">
+        <div class="star-rating mb-2" style="white-space: nowrap !important;">
+            <div class="star-rating-front" style="width: <%= review.review_rate_percentage %>%">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+            </div>
+        </h5>
+         <div class="review-text" >
+          <p class="card-text"><%= review.comment %></p>
+         </div>
+        <div class="text-right">
+        <%= link_to  "商品ページへ", product, class: 'btn btn-primary btn-to-show'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <% end %>
+    <% else %>
+      <div class="card text-center">
+       <div class="card-body">
+        <h5 class="card-title">現在投稿したレビューはありません</h5>
+       </div>
+      </div>
+    <% end %>
+</div>

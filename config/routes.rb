@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   get '/mypage' => 'users#show'
+  get     'mypage/like',   to: 'users#like'
+  get     'mypage/review',   to: 'users#review'
+  get     'mypage/order_history',   to: 'users#order_history'
+
 
   get     'shops/login',   to: 'sessions#new'
   post    'shops/login',   to: 'sessions#create'

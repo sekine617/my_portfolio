@@ -58,9 +58,9 @@
       <div class="column is-5">
         <div class="card card-nowrap mb-6" style="white-space: nowrap !important;">
           <header class="card-header">
-            <p class="card-header-title">
-              <%= @product.name %>
-            </p>
+            <h5 class="card-header-title">
+              <%= @product.name %>のレビュー
+            </h5>
              <div class="content average-score">
               <div class="star-rating mb-2">
                 <div class="star-rating-front" style="width: <%= @product.review_score_percentage %>%">★★★★★</div>
@@ -73,10 +73,10 @@
           </header>
           <div class="card-content">
 <% @reviews.each do |review| %>
-    <div class="card" style="white-space: nowrap !important;">
+    <div class="card">
       <div class="card-body">
         <h5 class="card-title">
-        <div class="star-rating mb-2">
+        <div class="star-rating mb-2" style="white-space: nowrap !important;">
                 <div class="star-rating-front" style="width: <%= review.review_rate_percentage %>%">★★★★★</div>
                 <div class="star-rating-back">★★★★★</div>
               </div>
@@ -86,7 +86,7 @@
         <p class="card-text"><%= review.user.last_name %></p>
         </div>
         <div class="col-md-10">
-        <p class="card-text"><%= review.comment %></p>
+        <p class="card-text text-break text-wrap"><%= review.comment %></p>
         </div>
         </div>
       </div>

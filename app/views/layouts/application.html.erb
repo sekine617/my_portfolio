@@ -12,14 +12,13 @@
   
   <body>
   <%= render 'header' %>
+  <div class="container">
   <% if flash[:notice] %>
   <div class="alert alert-primary"><%= flash[:notice] %></div>
 <% end %>
     <% if flash[:alert] %>
   <div class="alert alert-danger"><%= flash[:alert] %></div>
 <% end %>
-  <div class="container">
-  
     <%= yield %>
   </div>
   <%= render 'fooder' %>

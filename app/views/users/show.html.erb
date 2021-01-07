@@ -1,1 +1,39 @@
-mypage
+  <%= render partial: 'menu', locals: { user: @user } %>
+<div class="py-5">
+  <div class="card">
+  <div class="card-header">
+    <h4>プロフィール</h4>
+  </div>
+  <div class="card-body">
+<form>
+  <div class="form-group">
+    <label>お名前</label>
+      <div class="text-left">
+        <%= @user.last_name %> <%= @user.first_name %>様
+      </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label>メールアドレス</label>
+      <div class="text-left">
+        <%= @user.email %>
+      </div>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <label>お届け先住所</label>
+      <div class="text-left">
+        <%= @user.last_name %>
+      </div>
+  </div>
+  <br>
+  
+</form>
+
+
+
+  </div>
+</div>
+</div>

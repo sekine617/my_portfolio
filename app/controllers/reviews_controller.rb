@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = 'レビューを投稿しました'
       redirect_to @review.product
     else
-      redirect_to :back, flash: {
+      redirect_back fallback_location: @review.product, flash: {
         review: @review,
         error_messages: @review.errors.full_messages
       }
