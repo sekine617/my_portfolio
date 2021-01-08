@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_products, through: :likes, source: :product
+  has_many :cart
 
   validates :last_name, presence: true
   validates :first_name, presence: true

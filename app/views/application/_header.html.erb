@@ -21,7 +21,9 @@
         <%= header_link_item('商品一覧', products_path) %>
       </li>
       <li class="nav-item">
-        <%= header_link_item('商品一覧', products_path) %>
+       <% if user_signed_in? %>
+        <%= header_link_item('カート', carts_path) %>
+       <% end %>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -4,7 +4,6 @@
 <div class="p-review__formBox">
   <h5 class="p-review__formTitle">レビュー投稿</h5>
   <%= form_with model: review, url: product_reviews_path(product), local: true do |f| %>
-    <%= f.hidden_field :product_id %>
     <div class="form-group">
         <div class="main-rating">
       <div class="ratings mb-3">
@@ -19,7 +18,7 @@
     </div>
     <div class="form-group">
       <%= f.label :comment, 'コメント' %>
-      <%= f.text_area :comment, class: 'form-control', rows: 4, cols: 100 %>
+      <%= f.text_area :comment, class: 'form-control comment_area', rows: 4, cols: 100 %>
     </div>
     <%= f.hidden_field :product_id, value: product.id %>
     <%= f.hidden_field :rate, id: "rating-value" %>

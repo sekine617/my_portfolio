@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     if product.save
-      #flash[:notice] = "「#{product.name}」を作成しました"
+      flash[:notice] = "「#{product.name}」を作成しました"
       redirect_to product
     else
       redirect_to :back, flash: {
@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @cart = Cart.new
     @product = Product.find(params[:id])
     @review = Review.new
     @reviews = @product.reviews.limit(5)
