@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  #get '/orders', to: 'orders#index'
+  #get 'orders/confirm'
+resources :orders, only: %i[index create confirm]
+
   devise_for :users
   get '/mypage' => 'users#show'
   get     'mypage/like',   to: 'users#like'
