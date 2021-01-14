@@ -1,0 +1,7 @@
+<%= form_with url: update_item_path, local: true do |f| %>
+         <label class="my-1 mr-2" >個数</label>
+          <%= f.select :quantity, {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10}, {selected: cart_item.quantity }, { class: 'custom-select my-1 mr-sm-2 select_tag'} %>
+          <%= f.hidden_field :product_id, :value => cart_item.product.id %>
+          <%= f.submit '更新', class: 'btn btn-primary my-1 mr-2' %>
+          <%= link_to '削除', delete_item_path(product_id: cart_item.product.id), method: :delete %>
+<% end %>

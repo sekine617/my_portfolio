@@ -1,2 +1,25 @@
-<h1>Orders#confirm</h1>
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<div class="center-block">
+ <div class="card">
+  <div class="card-header">
+    <h3>注文内容確認</h3>
+  </div>
+  <div class="card-body m-4 text-center">
+
+   <div class="form-group row">
+    <label for="staticEmail" class="col-sm-3 col-form-label">受け取り希望日</label>
+    <div class="col-sm-9">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+    </div>
+  </div>
+
+    <%= form_for @order, method: :post, url: orders_back_path do |f| %>
+	  <%= f.submit '入力画面に戻る' %>
+    <% end %>
+
+    <%= form_for @order, method: :post, url: orders_complete_path do |f| %>
+	 <%= f.submit '送信する' %>
+    <% end %>
+
+  </div>
+ </div>
+</div>

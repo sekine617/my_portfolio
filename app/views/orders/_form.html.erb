@@ -1,0 +1,62 @@
+<form>
+<%= form_for @order, url: orders_confirm_path do |f| %>
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-3 col-form-label">受け取り希望日</label>
+    <div class="col-sm-9">
+      <%= f.select :receipt_date, @days %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-3 col-form-label">受け取り希望時間</label>
+    <div class="col-sm-9">
+        <%= f.select :receipt_time, {'10:00~12:00': 1, '13:00~15:00': 2, '15:00~17:00': 3, '17:00~19:00': 4}, { class: 'custom-select my-1 mr-sm-2 select_tag'} %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-3 col-form-label">ご配達先住所</label>
+    <div class="col-sm-9">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+    <div class="col-sm-9">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+
+<div class="card">
+   <table class="table">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">商品名</th>
+      <th scope="col">個数</th>
+      <th scope="col" class="text-right">価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% cart_items.each do |cart_item| %>
+    <tr>
+      <th class="order_img">
+          <%= image_tag cart_item.product.image.url, :width => '100%', :height => 'auto' %>
+      </th>
+      <td><%= cart_item.product.name %></td>
+      <td><%= cart_item.quantity %></td>
+      <td class="text-right">¥<%= cart_item.product.price %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <th scope><h4>合計</h4></th>
+      <td colspan="2"></td>
+      <td class="text-right"><h4 class>¥<%= @total_price %></h4></td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+<% end %>
+</form>

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   #get '/orders', to: 'orders#index'
-  #get 'orders/confirm'
-resources :orders, only: %i[index create confirm]
+  post 'orders/confirm', to: 'orders#confirm'
+  post 'orders/complete', to: 'orders#complete'
+  post 'reserve/back', to: 'orders#back'
+  resources :orders, only: %i[index create confirm complete]
 
   devise_for :users
   get '/mypage' => 'users#show'
@@ -22,8 +24,7 @@ resources :orders, only: %i[index create confirm]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
-  # resources :users, only: %i[new create]
-  #resources :tags
+
   resources :products do
     resources :reviews, only: %i[index create]
     post 'add', to:  'likes#create'

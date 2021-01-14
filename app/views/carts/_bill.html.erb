@@ -1,0 +1,25 @@
+   <% cart_items.each do |cart_item| %>
+     <div class="row no-gutters">
+        <div class="col-md-3">
+        <%= image_tag cart_item.product.image.url, :width => '100%', :height => '100%', class: 'show-img' %>
+       </div>
+       <div class="col-md-5">
+        <div class="text-center">
+          <h5><%= cart_item.product.name %></h5>
+          <%= render partial: 'form', locals: {cart_item: cart_item } %>
+         </div>
+       </div>
+       <div class="col-md-4 text-right">
+        <h5 class="mr-4">¥<%= cart_item.product.price %></h5>
+       </div>
+      </div>
+      <hr>
+   <% end %>
+  <div class="row">
+      <div class="col-md-6 text-left">
+       <h4>合計</h4>
+      </div>
+      <div class="col-md-6 text-right">
+       <h4 class="mr-3">¥<%= @total_price %></h4>
+      </div>
+  </div>
