@@ -55,9 +55,13 @@ ActiveRecord::Schema.define(version: 2021_01_13_093653) do
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "address", null: false
+    t.integer "postcode", null: false
+    t.integer "prefecture_code", null: false
+    t.string "address_city", null: false
+    t.string "address_street", null: false
+    t.string "address_building"
     t.date "receipt_date", null: false
-    t.time "receipt_time", null: false
+    t.integer "receipt_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -142,6 +146,11 @@ ActiveRecord::Schema.define(version: 2021_01_13_093653) do
     t.string "first_name", null: false
     t.string "last_hurigana", null: false
     t.string "first_hurigana", null: false
+    t.integer "postcode"
+    t.integer "prefecture_code"
+    t.string "address_city"
+    t.string "address_street"
+    t.string "address_building"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   #get '/orders', to: 'orders#index'
+  get 'orders/confirm', to: 'orders#confirm'
   post 'orders/confirm', to: 'orders#confirm'
   post 'orders/complete', to: 'orders#complete'
   post 'reserve/back', to: 'orders#back'
+
   resources :orders, only: %i[index create confirm complete]
 
   devise_for :users

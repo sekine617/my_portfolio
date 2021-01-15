@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :orders, dependent: :destroy
 
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
   validates :last_name, presence: true
   validates :first_name, presence: true
 
@@ -32,6 +35,14 @@ class User < ApplicationRecord
   validates :email,
             presence: true,
             uniqueness: true
+
+   def prefecture_name
+      JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+   end
+            
+   def prefecture_name=(prefecture_name)
+     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+   end
 
   def already_liked?(product)
     likes.exists?(product_id: product.id)

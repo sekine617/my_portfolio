@@ -7,6 +7,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name, null: false
       t.string :last_hurigana, null: false
       t.string :first_hurigana, null: false
+      t.integer :postcode
+      t.integer :prefecture_code
+      t.string :address_city
+      t.string :address_street
+      t.string :address_building
       ## Database authenticatable
       t.string :email,              null: false, default: ''
       t.string :encrypted_password, null: false, default: ''

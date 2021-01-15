@@ -45,6 +45,7 @@ gem 'rails-i18n'
 gem 'ransack'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'active_link_to'
+gem 'jp_prefecture'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
