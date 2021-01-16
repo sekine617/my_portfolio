@@ -16,16 +16,15 @@
 //= require rails-ujs
 //= require popper
 //= require bootstrap
-//= require_tree
 //= require jquery.jpostal 
-
+//= require orders.coffee
 
 
 $(function() {
     $(document).on('turbolinks:load', () => {
-      $('#user_postal_code').jpostal({
+      $('#user_post_code').jpostal({
         postcode : [
-          '#user_postal_code'
+          '#user_post_code'
         ],
         address: {
           "#user_prefecture_code": "%3", 

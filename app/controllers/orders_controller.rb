@@ -1,44 +1,66 @@
 class OrdersController < ApplicationController
   #include CartsController
   before_action :set_order
-  before_action :permit_params, except: :index
+  #before_action :permit_params, only: :confirm
   
-  def index
-    session.delete(:order)
+  def new
+    #session.delete(:order)
     @order = Order.new
   end
 
-  def confirm
-    @order = Order.new(@order_params)
-    @order.user_id = current_user.id
-    session[:order] = @order
-    #binding.pry
-    if @order.invalid?
-      binding.pry
-      #render :index
-      redirect_to orders_confirm_path
-    else
-      redirect_to orders_confirm_path
-    end
-  end
+  #def confirm
+    #@order = Order.new(order_params)
+    #@order.user_id = current_user.id
+    ##session[:order] = @order
+    #if @order.invalid?
+      ##binding.pry
+      ##redirect_to root_path
+      #render :new
+      ##redirect_to orders_confirm_path
+    #else
+      ##redirect_to root_path
+    #end
+  #end
+
 
   def back
-    @order = Order.new(session[:order])
-    session.delete(:order)
-    render :index
+    #@order = Order.new(session[:order])
+    #session.delete(:order)
+    #render :index
   end
 
   def complete
-    Order.create!(session[:order])
-		session.delete(:order)
+    #Order.create!(session[:order])
+		#session.delete(:order)
+  end
+
+
+
+  def create
+    #@user = User.new(user_params)
+    #render :new and return if params[:back] || !@user.save
+    #redirect_to @user
+
+    @order = Order.build(order_params)
+
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to @order, notice: '購入が完了しました' }
+      else
+        format.html { render action: 'new' }
+      end
+    end
   end
 
   private
 
-  def permit_params
-    @order_params = params
-    .permit(:user_id, :receipt_date, :receipt_time, :postcode, :prefecture_code, :address_city, :address_street, :address_building)
+  def order_params
+    params.require(:order).permit(:receipt_date, :receipt_time, :postcode, :prefecture_code, :address_city, :address_street, :address_building)
   end
+
+  #def order_params
+    #params.require('order').permit(:user_id, :receipt_date, :receipt_time, :postcode, :prefecture_code, :address_city, :address_street, :address_building)
+  #end
 
   def set_order
     @cart_items = current_cart.cart_items

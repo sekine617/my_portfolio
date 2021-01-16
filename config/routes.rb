@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
   #get '/orders', to: 'orders#index'
-  get 'orders/confirm', to: 'orders#confirm'
-  post 'orders/confirm', to: 'orders#confirm'
-  post 'orders/complete', to: 'orders#complete'
-  post 'reserve/back', to: 'orders#back'
 
-  resources :orders, only: %i[index create confirm complete]
+  #get 'orders/confirm', to: 'orders#confirm'
+  #post 'orders/confirm', to: 'orders#confirm'
+  #post 'orders/complete', to: 'orders#complete'
+  #post 'orders/back', to: 'orders#back'
+  #resources :orders, only: %i[index confirm complete back]
+
+  resources :orders, only: [:new, :create, :show] do
+    collection do
+      post :confirm
+    end
+  end
 
   devise_for :users
   get '/mypage' => 'users#show'

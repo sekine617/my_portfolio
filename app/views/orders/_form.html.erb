@@ -1,53 +1,53 @@
 
-<%= form_for @order, method: :post, url: orders_confirm_path do |f| %>
+<%= form_for @order, method: :post, url: confirm_orders_path(@order) do |f| %>
   <div class="form-group row">
     <label for="staticEmail" class="col-sm-3 col-form-label">受け取り希望日</label>
     <div class="col-sm-9">
-      <%= f.select :receipt_date, options_for_select(@days_array.map{|c|[c[:name], c[:id]]}), {}, {class: 'hoge', id: 'hogehoge'} %>
-      
+      <%= f.select :receipt_date, options_for_select(@days_array.map{|c|[c[:name], c[:id]]}), {prompt: '選択してください'}, {class: 'form-control', id: 'hogehoge'} %>
     </div>
   </div>
 
   <div class="form-group row">
     <label for="staticEmail" class="col-sm-3 col-form-label">受け取り希望時間</label>
     <div class="col-sm-9">
-        <%= f.select :receipt_time, {'10:00~12:00': 1, '13:00~15:00': 2, '15:00~17:00': 3, '17:00~19:00': 4}, { class: 'custom-select my-1 mr-sm-2 select_tag'} %>
+        <%= f.select :receipt_time, {'10:00~12:00': 1, '13:00~15:00': 2, '15:00~17:00': 3, '17:00~19:00': 4}, {prompt: '選択してください'}, {class: 'form-control', id: 'hogehoge'} %>
     </div>
   </div>
 
 ご配達先住所
-  <div class="form-group row">
-    <label for="staticEmail" class="col-sm-3 col-form-label">郵便番号</label>
-    <div class="col-sm-9">
-    <%= f.text_field :postcode, id: "user_postcode" %>
-    </div>
-  </div>
-
-<div class="form-group row">
-    <label for="staticEmail" class="col-sm-3 col-form-label">都道府県</label>
-    <div class="col-sm-9">
-    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name %>
-    </div>
-  </div>
 
   <div class="form-group row">
-    <label for="staticEmail" class="col-sm-3 col-form-label">市区町村</label>
+    <label class="col-sm-3 col-form-label">郵便番号</label>
     <div class="col-sm-9">
-    <%= f.text_field :address_city , id: "user_address_city"%>   
+      <%= f.text_field :postcode , id: "user_postcode", class: 'form-control' %>
     </div>
   </div>
 
 <div class="form-group row">
-    <label for="staticEmail" class="col-sm-3 col-form-label">番地</label>
+    <label class="col-sm-3 col-form-label">都道府県</label>
     <div class="col-sm-9">
-    <%= f.text_field :address_street , id: "user_address_street"%>   
+       <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', id: 'user_prefecture_code' %>  
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">市区町村</label>
+    <div class="col-sm-9">
+    <%= f.text_field :address_city , id: "user_address_city", class: 'form-control' %>   
     </div>
   </div>
 
 <div class="form-group row">
-    <label for="staticEmail" class="col-sm-3 col-form-label">建物名</label>
+    <label class="col-sm-3 col-form-label">番地</label>
     <div class="col-sm-9">
-    <%= f.text_field :address_building %>   
+    <%= f.text_field :address_street , id: "user_address_street" , class: 'form-control'%>   
+    </div>
+  </div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-form-label">建物名</label>
+    <div class="col-sm-9">
+    <%= f.text_field :address_building , class: 'form-control' %>   
     </div>
   </div>
 
