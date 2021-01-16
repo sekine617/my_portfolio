@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
     belongs_to :user
-    belongs_to :product
+    #belongs_to :product
     has_many :order_products
     accepts_nested_attributes_for :order_products, allow_destroy: true
     include JpPrefecture
@@ -13,13 +13,6 @@ class Order < ApplicationRecord
     validates :address_city, presence: true
     validates :address_street, presence: true 
 
-    validates_acceptance_of :confirming
-  after_validation :check_confirming
-
-  def check_confirming
-    errors.delete(:confirming)
-    self.confirming = errors.empty? ? '1' : ''
-  end
 
     def prefecture_name
         JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)

@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(product_params)
-    binding.pry
     if product.save
       flash[:notice] = "「#{product.name}」を作成しました"
       redirect_to product

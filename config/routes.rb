@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   #get '/orders', to: 'orders#index'
 
-  #get 'orders/confirm', to: 'orders#confirm'
+  get 'orders/confirm', to: 'orders#confirm'
   #post 'orders/confirm', to: 'orders#confirm'
-  #post 'orders/complete', to: 'orders#complete'
-  #post 'orders/back', to: 'orders#back'
+  get 'orders/complete', to: 'orders#complete'
+  post 'orders/back', to: 'orders#back'
   #resources :orders, only: %i[index confirm complete back]
 
-  resources :orders, only: [:new, :create, :show] do
+  resources :orders, only: [:new, :create, :show, :back] do
     collection do
       post :confirm
     end

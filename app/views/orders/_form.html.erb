@@ -1,5 +1,5 @@
 
-<%= form_for @order, method: :post, url: confirm_orders_path(@order) do |f| %>
+<%= form_with(model: @order, local: true, url: {action: 'confirm'}) do |f| %>
   <div class="form-group row">
     <label for="staticEmail" class="col-sm-3 col-form-label">受け取り希望日</label>
     <div class="col-sm-9">
@@ -52,7 +52,9 @@
   </div>
 
 
-<div class="card">
+
+
+  <div class="card">
    <table class="table">
     <thead>
     <tr>
@@ -81,8 +83,15 @@
   </tbody>
   </table>
 </div>
-  <div class="text-center mt-5">
 
+<%= f.hidden_field :confirming, value: 1 %>
+
+   <div class="text-center mt-5">
     <%= f.submit '注文内容を確認する' , class: 'btn btn-primary'%>
   </div>
-<% end %>
+
+
+  <% end %>
+
+
+ 
