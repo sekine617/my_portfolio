@@ -1,11 +1,11 @@
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">ショッピングカート</h4>
-    <div class="text-right">
+<% if @cart_items.present? %>
+<div class="text-right">
     <h5 class="mr-4">価格</h5>
     </div>
     <hr>
-<% if @cart_items.present? %>
    <%= render partial: 'bill', locals: {cart_items: @cart_items } %>
   
      <%= link_to '注文', new_order_path, class: 'btn btn-primary' %>
