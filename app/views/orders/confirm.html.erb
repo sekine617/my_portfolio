@@ -12,9 +12,7 @@
     </div>
   </div>
 
-
-
-    <%= form_for @order, method: :post do |f| %>
+    <%= form_with model: @order, method: :post, local: true do |f| %>
     <%= f.hidden_field :receipt_date %>
     <%= f.hidden_field :receipt_time %>
     <%= f.hidden_field :postcode %>
@@ -23,9 +21,16 @@
     <%= f.hidden_field :address_street %>
     <%= f.hidden_field :address_building %>
 
-  
-  <%= f.submit '入力画面に戻る', name: :back, class: "btn btn-primary" %>
-	 <%= f.submit '注文を確定する', class: "btn btn-primary" %>
+        <% @cart_items.each do |cart_item| %>
+        <%= f.fields_for :order_products do |op| %>
+          <%= op.hidden_field :price,value: cart_item.product.price %>
+          <%= op.hidden_field :product_id, value: cart_item.product.id %>
+          <%= op.hidden_field :quantity,value: cart_item.quantity %>
+        <% end %>
+      <% end %>
+      
+    <%= f.submit '入力画面に戻る', name: :back, class: "btn btn-primary" %>
+	  <%= f.submit '注文を確定する', class: "btn btn-primary" %>
     <% end %>
 
   </div>

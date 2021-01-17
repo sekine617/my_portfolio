@@ -9,10 +9,10 @@ class OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    binding.pry
     if @order.invalid?
       render :new
     end
+    @order.order_products.build
   end
 
 
@@ -21,25 +21,42 @@ class OrdersController < ApplicationController
   end
 
   def complete
-    #Order.create!(session[:order])
-		#session.delete(:order)
+    #@order_products = OrderProduct.all
+    
   end
-
 
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    binding.pry
     render :new and return if params[:back] || !@order.save
+    current_cart.destroy
     redirect_to orders_complete_path
-
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:receipt_date, :receipt_time, :postcode, :prefecture_code, :address_city, :address_street, :address_building)
+    params.require(:order).permit(:receipt_date,
+                                  :receipt_time, 
+                                  :postcode,
+                                  :prefecture_code, 
+                                  :address_city,
+                                  :address_street, 
+                                  :address_building,
+                                  order_products_attributes: [
+                                     :price,
+                                     :product_id,
+                                     :quantity ])
   end
+
+  #def order_product_params
+   # params.require(:order_products).permit(:price, :product_id, :quantity)
+  #end
+
+  def set_order_product
+    
+  end
+
 
 
   def set_order

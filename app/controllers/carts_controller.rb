@@ -28,6 +28,7 @@ class CartsController < ApplicationController
       @cart_item.destroy
       redirect_back fallback_location: carts_path
     end
+
   
     private
   

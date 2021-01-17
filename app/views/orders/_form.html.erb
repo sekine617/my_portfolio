@@ -51,45 +51,12 @@
     </div>
   </div>
 
-
-
-
-  <div class="card">
-   <table class="table">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">商品名</th>
-      <th scope="col">個数</th>
-      <th scope="col" class="text-right">価格</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% cart_items.each do |cart_item| %>
-    <tr>
-      <th class="order_img">
-          <%= image_tag cart_item.product.image.url, :width => '100%', :height => 'auto' %>
-      </th>
-      <td><%= cart_item.product.name %></td>
-      <td><%= cart_item.quantity %></td>
-      <td class="text-right">¥<%= cart_item.product.price %></td>
-    </tr>
-    <% end %>
-    <tr>
-      <th scope><h4>合計</h4></th>
-      <td colspan="2"></td>
-      <td class="text-right"><h4 class>¥<%= @total_price %></h4></td>
-    </tr>
-  </tbody>
-  </table>
-</div>
-
-<%= f.hidden_field :confirming, value: 1 %>
+注文商品
+    <%= render partial: 'bill', locals: {cart_items: @cart_items } %>
 
    <div class="text-center mt-5">
     <%= f.submit '注文内容を確認する' , class: 'btn btn-primary'%>
   </div>
-
 
   <% end %>
 
