@@ -7,4 +7,17 @@ module ApplicationHelper
       link_to name, path, class: 'nav-link'
     end
   end
+
+  def time_format(int_time)
+    case int_time
+    when 1
+      return '10:00~12:00'
+    when 2
+      return '13:00~15:00'
+    when 3
+      return '15:00~17:00'
+    when 4
+      return '17:00~19:00'
+    end
+  end
 end

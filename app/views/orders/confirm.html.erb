@@ -6,13 +6,34 @@
     <div class="card-body m-4">
 
         <div class="form-group row">
-           <label class="col-sm-3 col-form-label"><h5>受け取り希望日</h5></label>
-           <div class="col-sm-9">
-              <h5><%= @order.receipt_date.to_s(:date_jp) %></h5>
+           <label class="col-sm-4 col-form-label"><h5>受け取り希望日</h5></label>
+           <div class="col-sm-8">
+              <h5 class="col-form-label"><%= @order.receipt_date.strftime("%-m月 %-d日") %></h5>
            </div>
-       </div>
+        </div>
 
-      注文商品
+        <div class="form-group row">
+           <label class="col-sm-4 col-form-label"><h5>受け取り希望時間</h5></label>
+           <div class="col-sm-8">
+              <h5 class="col-form-label"><%= time_format(@order.receipt_time) %></h5>
+           </div>
+        </div>
+
+        <div class="form-group row">
+           <label class="col-sm-4 col-form-label"><h5>お届け先住所</h5></label>
+           <div class="col-sm-8">
+              <h5 class="col-form-label"><%= @order.postcode %></h5><br>
+              <h5 class="col-form-label">
+              <%= @order.prefecture_name %>
+              <%= @order.address_city %>
+              <%= @order.address_street %>
+              <%= @order.address_building %>
+              </h5>
+           </div>
+        </div>
+
+      <hr>
+      <h5>注文商品</h5>
       <%= render partial: 'bill', locals: {cart_items: @cart_items } %>
     </div>
 

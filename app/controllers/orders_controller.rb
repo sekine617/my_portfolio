@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
   def complete
     #@order_products = OrderProduct.all
     
+    
   end
 
   def create
@@ -49,15 +50,6 @@ class OrdersController < ApplicationController
                                      :quantity ])
   end
 
-  #def order_product_params
-   # params.require(:order_products).permit(:price, :product_id, :quantity)
-  #end
-
-  def set_order_product
-    
-  end
-
-
 
   def set_order
     @cart_items = current_cart.cart_items
@@ -68,7 +60,7 @@ class OrdersController < ApplicationController
     @today = Date.current
     @days_array = []
     (1..14).each do |i|
-      @days_array.push({:id => (@today + i.day), :name => (@today + i.day).strftime("%m月 %d日")})
+      @days_array.push({:id => (@today + i.day), :name => (@today + i.day).strftime("%-m月 %-d日")})
     end
   end
 
