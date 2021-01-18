@@ -6,8 +6,8 @@ class Product < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   has_many :order_products
-  #has_many :product_category_relations, dependent: :destroy
-  #has_many :category, through: :product_category_relations
+  # has_many :product_category_relations, dependent: :destroy
+  # has_many :category, through: :product_category_relations
 
   def avg_score
     if reviews.empty?
@@ -33,7 +33,7 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true }
   validates :image, presence: true
   validates :description, presence: true
-  validates :quantity_per_day, 
-              presence: true,
-              numericality: { only_integer: true }
+  validates :quantity_per_day,
+            presence: true,
+            numericality: { only_integer: true }
 end

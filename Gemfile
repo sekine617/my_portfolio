@@ -34,18 +34,18 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'active_link_to'
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave'
 gem 'devise'
+gem 'jp_prefecture'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'rails-i18n'
 gem 'ransack'
-gem 'acts-as-taggable-on', '~> 6.0'
-gem 'active_link_to'
-gem 'jp_prefecture'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

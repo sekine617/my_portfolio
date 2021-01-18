@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
       @tag_results = Product.tagged_with(params[:tag_name])
       @products = @tag_results.page(params[:page])
     else
-    @products = @results.page(params[:page])
+      @products = @results.page(params[:page])
     end
   end
 
@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :image, :description, :shop_id, :quantity_per_day, :tag_list, tag_list: [])
+    params.require(:product).permit(:name, :price, :image, :description, :shop_id, :quantity_per_day, :tag_list,
+                                    tag_list: [])
   end
 end

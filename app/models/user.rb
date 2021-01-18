@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-
   validates :last_name, presence: true
   validates :first_name, presence: true
 
@@ -33,7 +32,6 @@ class User < ApplicationRecord
   validates :email,
             presence: true,
             uniqueness: true
-
 
   def already_liked?(product)
     likes.exists?(product_id: product.id)

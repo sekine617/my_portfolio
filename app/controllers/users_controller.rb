@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :like, :review, :order_history]
+  before_action :authenticate_user!, only: %i[show like review order_history]
   def show
     @user = current_user
   end
@@ -14,6 +14,5 @@ class UsersController < ApplicationController
     @reviews = Review.where(user_id: user.id)
   end
 
-  def order_history
-  end
+  def order_history; end
 end

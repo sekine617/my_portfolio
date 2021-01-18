@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
     @results = @search.result
   end
 
-
   protected
 
   def configure_permitted_parameters
