@@ -1,10 +1,10 @@
-<div class="center-block">
+<div class="row">
+<div class="center-block col-sm-8">
  <div class="card">
   <div class="card-header">
     <h3>注文内容確認</h3>
   </div>
     <div class="card-body m-4">
-
         <div class="form-group row">
            <label class="col-sm-4 col-form-label"><h5>受け取り希望日</h5></label>
            <div class="col-sm-8">
@@ -31,14 +31,19 @@
               </h5>
            </div>
         </div>
-
       <hr>
       <h5>注文商品</h5>
       <%= render partial: 'bill', locals: {cart_items: @cart_items } %>
+      </div>
     </div>
+  </div>
 
-    <div class="card-body m-4 text-center">
-      <%= render partial: 'confirmForm', locals: {cart_items: @cart_items, order: @order} %>
+
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="container mb-3">
+         <%= render partial: 'confirmForm', locals: {cart_items: @cart_items } %>
+      </div>
     </div>
- </div>
+  </div>
 </div>

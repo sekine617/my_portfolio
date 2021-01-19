@@ -12,21 +12,29 @@ class OrdersController < ApplicationController
     @order.order_products.build
   end
 
-  def back
-    render :new
-  end
-
   def complete
     # @order_products = OrderProduct.all
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.user_id = current_user.id
-    render :new and return if params[:back] || !@order.save
-
-    current_cart.destroy
-    redirect_to orders_complete_path
+    if params[:back]
+      redirect_to new_order_path
+    else
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY] 
+       Payjp::Charge.create(
+      amount: @total_price,
+      card: params['payjp-token'],
+      currency: 'jpy'
+    )
+      @order = Order.new(order_params)
+      @order.user_id = current_user.id
+      if @order.save
+        current_cart.destroy
+        render :complete
+      else 
+        render :new
+      end
+    end
   end
 
   private
