@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  # get '/orders', to: 'orders#index'
-
   get 'orders/confirm', to: 'orders#confirm'
-  # post 'orders/confirm', to: 'orders#confirm'
   get 'orders/complete', to: 'orders#complete'
   post 'orders/back', to: 'orders#back'
-  # resources :orders, only: %i[index confirm complete back]
 
   resources :orders, only: %i[new create show back] do
     collection do
@@ -19,6 +15,7 @@ Rails.application.routes.draw do
   get     'mypage/review', to: 'users#review'
   get     'mypage/order_history', to: 'users#order_history'
 
+  resources :shops, only: %i[show]
   get     'shops/login',   to: 'sessions#new'
   post    'shops/login',   to: 'sessions#create'
   delete  'shops/logout',  to: 'sessions#destroy'

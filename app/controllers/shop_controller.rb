@@ -1,7 +1,11 @@
 class ShopController < ApplicationController
-  skip_before_action :require_sign_in!, only: [:new, :create]
+  skip_before_action :require_sign_in!, only: [:new, :create, :show]
+    def show
+      @products = Product.find_by(shop_id: params[:id])
+    end
+
     def new
-        @shop = Shop.new(flash[:shop])
+      @shop = Shop.new(flash[:shop])
     end
 
     def create

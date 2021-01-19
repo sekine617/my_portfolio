@@ -9,6 +9,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :address_building
       t.date :receipt_date, null: false
       t.integer :receipt_time, null: false
+      t.integer :total_price, null: false
 
       t.timestamps
     end

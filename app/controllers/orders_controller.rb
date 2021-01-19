@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       if @order.save
         current_cart.destroy
+        binding.pry
         render :complete
       else 
         render :new
@@ -47,9 +48,11 @@ class OrdersController < ApplicationController
                                   :address_city,
                                   :address_street,
                                   :address_building,
+                                  :total_price,
                                   order_products_attributes: %i[
                                     price
                                     product_id
+                                    shop_id
                                     quantity
                                   ])
   end

@@ -6,12 +6,14 @@
             <%= f.hidden_field :address_city %>
             <%= f.hidden_field :address_street %>
             <%= f.hidden_field :address_building %>
+            <%= f.hidden_field :total_price, value: @total_price%>
 
           <% cart_items.each do |cart_item| %>
            <%= f.fields_for :order_products do |op| %>
              <%= op.hidden_field :price,value: cart_item.product.price %>
              <%= op.hidden_field :product_id, value: cart_item.product.id %>
              <%= op.hidden_field :quantity,value: cart_item.quantity %>
+             <%= op.hidden_field :shop_id, value: cart_item.product.shop_id %>
            <% end %>
           <% end %>
 

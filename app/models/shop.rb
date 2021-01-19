@@ -1,6 +1,7 @@
 class Shop < ApplicationRecord
   has_many :products, dependent: :destroy
   has_secure_password validations: true
+  has_many :order_products, dependent: :destroy
 
   def self.new_remember_token
     SecureRandom.urlsafe_base64

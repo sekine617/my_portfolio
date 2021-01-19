@@ -5,14 +5,17 @@ class UsersController < ApplicationController
   end
 
   def like
-    user = current_user
-    @likes = Like.where(user_id: user.id)
+    @likes = Like.where(user_id: current_user.id)
   end
 
   def review
-    user = current_user
-    @reviews = Review.where(user_id: user.id)
+    @reviews = Review.where(user_id: current_user.id)
   end
 
-  def order_history; end
+  def order_history
+    @orders = Order.where(user_id: current_user.id)
+    @orders = @orders.page(params[:page])
+  end
+
+
 end
