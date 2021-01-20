@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @latest_products = Product.all.order(id: "DESC").limit(3)
+  end
 end

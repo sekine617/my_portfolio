@@ -1,7 +1,9 @@
-class ShopController < ApplicationController
-  skip_before_action :require_sign_in!, only: [:new, :create, :show]
+class ShopsController < ApplicationController
+ #skip_before_action :require_sign_in!, only: [:new, :create, :show]
     def show
-      @products = Product.find_by(shop_id: params[:id])
+      @shop = Shop.find_by(params[:id])
+      @products = Product.where(shop_id: params[:id])
+      @products = @products.page(params[:page])
     end
 
     def new
@@ -19,6 +21,7 @@ class ShopController < ApplicationController
             shop: shop,
             error_messages: shop.errors.full_messages
           }
+        end
       end
 
       def me

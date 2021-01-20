@@ -1,53 +1,51 @@
   <%= render partial: 'menu', locals: { user: @user } %>
-<div class="py-5">
-    <% if @orders.present? %>
-         <% @orders.each do |order| %>
-           <div class="card">
-             <div class="card-header">
+  <div class="py-5">
+      <% if @orders.present? %>
+      <% @orders.each do |order| %>
+      <div class="card">
+          <div class="card-header">
               <div class="row">
-               <div class="col-md-4">
-                 ご注文日<br>
-                 <%= order.created_at.strftime('%-m月 %-d日') %>
-               </div>
-               <div class="col-md-4">
-                 配達日時<br>
-                 <%= order.receipt_date.strftime('%-m月 %-d日') %>　　<%= time_format(order.receipt_time) %>
-               </div>
-               <div class="col-md-4">
-                 合計金額<br>
-                 ¥<%= order.total_price %>
-               </div>
+                  <div class="col-md-4">
+                      ご注文日<br>
+                      <%= order.created_at.strftime('%-m月 %-d日') %>
+                  </div>
+                  <div class="col-md-4">
+                      配達日時<br>
+                      <%= order.receipt_date.strftime('%-m月 %-d日') %>　　<%= time_format(order.receipt_time) %>
+                  </div>
+                  <div class="col-md-4">
+                      合計金額<br>
+                      ¥<%= order.total_price %>
+                  </div>
               </div>
+          </div>
+          <% order_products = OrderProduct.where(order_id: order.id) %>
+          <% order_products.each do |order_product| %>
+          <% op = order_product.product %>
+          <% shop = Shop.find_by(id: order_product.shop_id) %>
+          <div class="card mb-3">
+              <div class="row no-gutters">
+                  <div class="col-md-4">
+                      <%= image_tag op.image.url, :width => '100%', :height => '225', class: 'index-img' %>
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                          <h5 class="card-title"><%= link_to  "#{op.name}", op, class: ''%></h5>
+                          <h5 class="card-title">¥<%= op.price %></h5>
+                          <h5 class="card-title"><%= link_to  "ショップ：#{shop.name}", shop_path(shop.id), class: ''%></h5>
+                      </div>
+                  </div>
               </div>
-             <% order_products = OrderProduct.where(order_id: order.id) %>
-                    <% order_products.each do |order_product| %>
-                        <% op = order_product.product %>
-                        <% shop = Shop.find_by(id: order_product.shop_id) %>
-                           <div class="card mb-3">
-                               <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <%= image_tag op.image.url, :width => '100%', :height => '225', class: 'index-img' %>
-                                     </div>
-                                     <div class="col-md-8">
-                                        <div class="card-body">
-                                          <h5 class="card-title"><%= link_to  "#{op.name}", op, class: ''%></h5>
-                                                  
-                                          <h5 class="card-title">¥<%= op.price %></h5>
-                                          <h5 class="card-title">ショップ：<%= shop.name %></h5>
-                                          <h5 class="card-title"><%= link_to  "ショップ：#{shop.name}", shop_path(shop.id), class: ''%></h5>
-                                        </div>
-                                    </div>
-                               </div>
-                           </div>
-                      <% end %>
-            </div>
-    <% end %>
-    <% else %>
-        <div class="card text-center">
-             <div class="card-body">
-                 <h5 class="card-title">現在お気に入り登録している商品はありません</h5>
-            </div>
-        </div>
-    <% end %>
-    <%= paginate @orders %>
- </div>
+          </div>
+          <% end %>
+      </div>
+      <% end %>
+      <% else %>
+      <div class="card text-center">
+          <div class="card-body">
+              <h5 class="card-title">現在お気に入り登録している商品はありません</h5>
+          </div>
+      </div>
+      <% end %>
+      <%= paginate @orders %>
+  </div>
