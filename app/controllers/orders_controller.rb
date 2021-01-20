@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       if @order.save
         current_cart.destroy
-        binding.pry
         render :complete
       else 
         render :new
