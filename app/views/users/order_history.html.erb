@@ -1,3 +1,7 @@
+  <div class=" mt-5">
+<div class="card contents">
+<div class="card-body"> 
+
   <%= render partial: 'menu', locals: { user: @user } %>
   <div class="py-5">
       <% if @orders.present? %>
@@ -48,4 +52,7 @@
       </div>
       <% end %>
       <%= paginate @orders %>
+  </div>
+  </div>
+  </div>
   </div>
