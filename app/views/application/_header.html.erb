@@ -6,7 +6,7 @@
             <div class="search">
                 <form class="form-inline search-box">
                     <%= search_form_for @search do |f| %>
-                    <%= f.search_field :name_cont , class:'form-control mr-sm-2 search-input' %>
+                    <%= f.search_field :name_cont , class:'form-control mr-sm-2 search-input', placeholder: "商品名を入力" %>
                     <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
                     <% end %>
                 </form>
@@ -52,3 +52,6 @@
             </div>
         </div>
     </header>
+    <div class="text-center var">
+        <h4 class="display-4 pt-2 var-text">送料無料キャンペーン実施中！</h4>
+    </div>

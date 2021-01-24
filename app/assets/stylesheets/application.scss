@@ -27,6 +27,21 @@ a {
   color: rgb(27, 27, 27);
   text-decoration: none;
 }
+body {
+  background-color: rgb(243, 243, 243);
+}
+.var {
+  height: 80px;
+  background-color: rgb(194, 2, 48);
+  .var-text {
+    color: rgb(255, 242, 175);
+  }
+}
+
+.contents {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
 
 //navbar
 .search-box {
@@ -67,7 +82,7 @@ li {
 
 .site-header {
   position: relative;
-  background-color: #def7ff;
+  background-color: white;
 }
 
 .site-header__start {

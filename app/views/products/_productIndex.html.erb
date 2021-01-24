@@ -14,14 +14,14 @@
         <div class="card-body">
             <h5 class="card-title"><%= product.name %></h5>
             <div class="row">
-                <div class="col-md-7">
+                <div class="ml-2 pl-1">
                     <div class="star-rating mb-2">
                         <div class="star-rating-front" style="width: <%= product.review_score_percentage %>%">★★★★★</div>
                         <div class="star-rating-back">★★★★★</div>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="ml-3 pt-2">
+                <div class="ml-3">
+                    <div class="pt-2">
                         <%= product.reviews.count %>件
                     </div>
                 </div>
@@ -29,6 +29,8 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title mt-3">¥<%= product.price %>(税込み)</h5>
             </div>
+            <h6 class="card-title"><%= link_to  "ショップ：#{product.shop.name}", shop_path(product.shop.id), class: ''%></h6><br>
+
             <div class="text-right">
                 <%= link_to "詳細", product, class: 'card-link ' %>
             </div>

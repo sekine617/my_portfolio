@@ -2,62 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//index
+
+.category-box {
+  padding-top: 3rem;
+  width: 80%;
+}
+
+.col-md-4 {
+  padding-right: 0;
+}
+
+//
 .star-rating {
-    position: relative;
-    width: 5em;
-    height: 1em;
-    font-size: 25px;
-  }
-  .star-rating-front {
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    color: #ffcc33;
-  }
-  .star-rating-back {
-    color: #ccc;
-  }
-  
-  .average-score {
-    display: flex;
-  }
-  .average-score-display {
-    font-size: 16px;
-  }
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  color: #ccc;
+}
 
+.average-score {
+  display: flex;
+}
+.average-score-display {
+  font-size: 16px;
+}
 
-  .product-img {
-    position: relative;
-    .like-btn {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        .far {
-            color: rgba(157, 157, 157, 0.544);
-        }
-    }
-  }
-
-  .like-btn-show {
+.product-img {
+  position: relative;
+  .like-btn {
     position: absolute;
     top: 5px;
     right: 5px;
     .far {
-        color: rgba(55, 55, 55, 0.544);
+      color: rgba(157, 157, 157, 0.544);
     }
+  }
 }
 
-.index-img{
-    object-fit: cover;
+.like-btn-show {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  .far {
+    color: rgba(55, 55, 55, 0.544);
+  }
+}
+
+.index-img {
+  object-fit: cover;
 }
 
 .show-img {
-    object-fit: cover;
+  object-fit: cover;
 }
-
-
-  
-
-
-
