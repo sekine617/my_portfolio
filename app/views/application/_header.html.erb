@@ -1,45 +1,54 @@
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-  <a class="navbar-brand" href="#">Top navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-    <form class="form-inline mt-2 mt-md-0">
-
-      <%= search_form_for @search do |f| %>
-      <%= f.search_field :name_cont , class:'form-control mr-sm-2' %>
-      <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
-      <% end %>
-    </form>
-
-    
-      <li class="nav-item active">
-        <%= header_link_item('ホーム', root_path) %>
-      </li>
-      <li class="nav-item">
-        <%= header_link_item('商品一覧', products_path) %>
-      </li>
-      <li class="nav-item">
-       <% if user_signed_in? %>
-        <%= header_link_item('カート', carts_path) %>
-       <% end %>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ユーザー
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if user_signed_in? %>
-            <%= link_to 'マイページ', mypage_path, class: 'dropdown-item' %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-          <% else %>
-            <%= link_to '登録', new_user_registration_path, class: 'dropdown-item' %>
-            <%= link_to 'ログイン', new_user_session_path, class: 'dropdown-item' %>
-          <% end %>
+    <header class="site-header">
+        <div class="wrapper site-header__wrapper">
+            <div class="site-header__start ml-4">
+                <a href="#" class="brand">Brand</a>
+            </div>
+            <div class="search">
+                <form class="form-inline search-box">
+                    <%= search_form_for @search do |f| %>
+                    <%= f.search_field :name_cont , class:'form-control mr-sm-2 search-input' %>
+                    <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
+                    <% end %>
+                </form>
+            </div>
+            <div class="site-header__end">
+                <nav class="nav">
+                    <ul class="nav__wrapper mt-2 mb-2 mr-4">
+                        <div class="nav__item text-center">
+                            <%= link_to root_path do %>
+                            <i class="fas fa-home"></i><br>
+                            <span>ホーム</span>
+                            <% end %>
+                        </div>
+                        <div class="nav__item text-center">
+                            <%= link_to products_path do %>
+                            <i class="fas fa-birthday-cake"></i><br>
+                            <span>商品一覧</span>
+                            <% end %>
+                        </div>
+                        <div class="nav__item text-center dropdown">
+                            <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user"></i><br>
+                                <span>ユーザー</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <% if user_signed_in? %>
+                                <%= link_to 'マイページ', mypage_path, class: 'dropdown-item' %>
+                                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                                <% else %>
+                                <%= link_to '登録', new_user_registration_path, class: 'dropdown-item' %>
+                                <%= link_to 'ログイン', new_user_session_path, class: 'dropdown-item' %>
+                                <% end %>
+                            </div>
+                        </div>
+                        <div class="nav__item text-center">
+                            <%= link_to carts_path do %>
+                            <i class="fas fa-shopping-cart"></i><br>
+                            <span>カート</span>
+                            <% end %>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
         </div>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
+    </header>

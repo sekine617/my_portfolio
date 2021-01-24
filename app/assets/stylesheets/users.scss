@@ -3,15 +3,102 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .alert {
-    padding: 0.75rem 1.25rem 0 1.25rem !important;
+  padding: 0.75rem 1.25rem 0 1.25rem !important;
 }
 
 .btn-to-show {
-    position: absolute;
-        bottom: 1rem;
-        right: 1rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .review-text {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+//sign in form
+
+.signup-form,
+.login-form {
+  margin: 0 auto;
+  text-align: center;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #fafafa;
+  max-width: 720px;
+}
+.head {
+  -webkit-border-radius: 6px 6px 0px 0px;
+  -moz-border-radius: 6px 6px 0px 0px;
+  border-radius: 6px 6px 0px 0px;
+  background-color: #2abca7;
+  color: #fafafa;
+}
+.head-text {
+  text-align: center;
+  padding: 18px 0 18px 0;
+  font-size: 1.4em;
+}
+
+textarea {
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.input-form {
+  font-size: 1em;
+  padding: 15px 10px 10px;
+  font-family: "Source Sans Pro", arial, sans-serif;
+  border: 1px solid #cecece;
+  background: #e6e5e5;
+  color: #000000;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
+  max-width: 600px;
+}
+
+.button {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  background-color: #2abca7;
+  padding: 12px 45px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #2abca7;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  display: inline-block;
+  cursor: pointer;
+  width: 30%;
+  color: #fff;
+}
+button:hover,
+.button:hover {
+  background: #19a08c;
+}
+
+.name-form {
+  padding: 0px !important;
+  .input-name {
+    max-width: 238px;
+  }
+}
+
+.field {
+  max-width: 535px;
+  margin: 0 auto;
+}
+
+.long-form {
+  width: 535px;
 }
