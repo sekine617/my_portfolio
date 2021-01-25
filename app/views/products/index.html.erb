@@ -15,11 +15,13 @@
       </div>
 
       <div class="col-md-9">
-          <div class="album py-5">
+          <div class="album pt-5">
               <div class="row">
                   <%= render partial: 'products/productIndex', locals: { products: @products } %>
               </div>
           </div>
+          <div class="bg-white paginate">
           <%= paginate @products %>
+          </div>
       </div>
   </div>

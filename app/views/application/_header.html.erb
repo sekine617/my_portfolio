@@ -1,13 +1,13 @@
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
             <div class="site-header__start ml-4">
-                <a href="#" class="brand">Brand</a>
+                <%= link_to 'スイーツデリ', root_path, class: 'brand text-nowrap' %>
             </div>
             <div class="search">
                 <form class="form-inline search-box">
                     <%= search_form_for @search do |f| %>
                     <%= f.search_field :name_cont , class:'form-control mr-sm-2 search-input', placeholder: "商品名を入力" %>
-                    <%= f.submit class: 'btn btn-outline-success my-2 my-sm-0' %>
+                    <%= f.submit class: 'btn btn-outline-info w-10 my-2 my-sm-0' %>
                     <% end %>
                 </form>
             </div>
@@ -17,19 +17,19 @@
                         <div class="nav__item text-center">
                             <%= link_to root_path do %>
                             <i class="fas fa-home"></i><br>
-                            <span>ホーム</span>
+                            <span class="text-nowrap">ホーム</span>
                             <% end %>
                         </div>
                         <div class="nav__item text-center">
                             <%= link_to products_path do %>
                             <i class="fas fa-birthday-cake"></i><br>
-                            <span>商品一覧</span>
+                            <span class="text-nowrap">商品一覧</span>
                             <% end %>
                         </div>
                         <div class="nav__item text-center dropdown">
                             <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user"></i><br>
-                                <span>ユーザー</span>
+                                <span class="text-nowrap">ユーザー</span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <% if user_signed_in? %>
@@ -44,7 +44,7 @@
                         <div class="nav__item text-center">
                             <%= link_to carts_path do %>
                             <i class="fas fa-shopping-cart"></i><br>
-                            <span>カート</span>
+                            <span class="text-nowrap">カート</span>
                             <% end %>
                         </div>
                     </ul>

@@ -9,36 +9,31 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                <rect width="100%" height="100%" fill="#777" /></svg>
+            <img src="/assets/home1.jpg" alt="" class="w-100">
             <div class="container">
-                <div class="carousel-caption text-left">
-                    <h1>Example headline.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                <div class="carousel-caption text-left home1">
+                    <h1>チョコレートスイーツ特集</h1>
+                    <p> 海外の人気ショコラティエや老舗洋菓子店のチョコレートスイーツを多数ご用意しました。</p>
+                    <%= link_to '詳細', 'products?tag_name=チョコレート', class: 'btn btn-primary' %>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                <rect width="100%" height="100%" fill="#777" /></svg>
+           <img src="/assets/home2.jpg" alt="" class="w-100">
             <div class="container">
-                <div class="carousel-caption">
-                    <h1>Another example headline.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                </div>
+                <div class="carousel-caption home2">
+                    <h1>イチゴフェア</h1>
+                    <p> いちごの王様「あまおう」や「紅ほっぺ」を使用した、ストロベリーデザートを中心にケーキ、ゼリーなどのグラスデザートもお買い求めできます。</p>
+                    <%= link_to '詳細', 'products?tag_name=イチゴ', class: 'btn btn-primary' %>                </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                <rect width="100%" height="100%" fill="#777" /></svg>
+            <img src="/assets/home4.jpg" alt="" class="w-100">
             <div class="container">
-                <div class="carousel-caption text-right">
-                    <h1>One more for good measure.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                </div>
+                <div class="carousel-caption text-right home4">
+                    <h1>誕生日ケーキデリバリー</h1>
+                    <p>お誕生日のお祝いに欠かせないバースデイケーキを店頭に出向かずに受け取ることができます。</p>
+                    <%= link_to '詳細', 'products?tag_name=デコレーションケーキ', class: 'btn btn-primary' %>                </div>
             </div>
         </div>
     </div>
@@ -61,5 +56,6 @@
     <div class="contents">
         <%= render partial: 'productIndex', locals: { products: @latest_products, title: '新着商品'} %>
         <%= render partial: 'productIndex', locals: { products: @popular_products, title: '人気商品'} %>
+        <%= render partial: 'productIndex', locals: { products: @chocolate_products, title: 'チョコレート商品'} %>
     </div>
 </div>

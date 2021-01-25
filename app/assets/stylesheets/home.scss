@@ -2,28 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
   }
+}
 
 .carousel-item {
-    height: 32rem;
+  height: 32rem;
 }
 
 .d-block {
-    width: 100%;
+  width: 100%;
 }
 
-.form-control{
-    width: 300px !important;
+.form-control {
+  width: 300px !important;
+}
+
+//carousel
+.home1 {
+  right: 10%;
+  bottom: 200px;
+  left: 50%;
+}
+
+.home2 {
+  bottom: 50px;
+}
+
+.home4 {
+  color: rgb(21, 21, 21);
 }
