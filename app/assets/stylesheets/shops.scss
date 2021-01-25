@@ -2,20 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table {
+.shop-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-table tr {
+.shop-table-tr {
   border-bottom: solid 2px white;
 }
 
-table tr:last-child {
+.tr-last {
   border-bottom: none;
 }
 
-table th {
+.shop-table-th {
   position: relative;
   text-align: left;
   width: 30%;
@@ -25,7 +25,7 @@ table th {
   padding: 10px 0;
 }
 
-table th:after {
+.shop-table-th :after {
   display: block;
   content: "";
   width: 0px;
@@ -38,7 +38,7 @@ table th:after {
   border-bottom: 10px solid transparent;
 }
 
-table td {
+.shop-table-td {
   text-align: left;
   width: 70%;
   text-align: center;

@@ -51,11 +51,13 @@
     </div>
   </div>
 
+<div class="mt-4">
 注文商品
     <%= render partial: 'bill', locals: {cart_items: @cart_items } %>
 
    <div class="text-center mt-5">
     <%= f.submit '注文内容を確認する' , class: 'btn btn-primary'%>
+  </div>
   </div>
 
   <% end %>

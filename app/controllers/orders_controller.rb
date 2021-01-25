@@ -20,9 +20,10 @@ class OrdersController < ApplicationController
     if params[:back]
       redirect_to new_order_path
     else
+      binding.pry
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY] 
        Payjp::Charge.create(
-      amount: @total_price,
+      amount: order_params[:total_price],
       card: params['payjp-token'],
       currency: 'jpy'
     )
