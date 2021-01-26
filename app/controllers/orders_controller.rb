@@ -21,18 +21,18 @@ class OrdersController < ApplicationController
       redirect_to new_order_path
     else
       binding.pry
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY] 
-       Payjp::Charge.create(
-      amount: order_params[:total_price],
-      card: params['payjp-token'],
-      currency: 'jpy'
-    )
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+      Payjp::Charge.create(
+        amount: order_params[:total_price],
+        card: params['payjp-token'],
+        currency: 'jpy'
+      )
       @order = Order.new(order_params)
       @order.user_id = current_user.id
       if @order.save
         current_cart.destroy
         render :complete
-      else 
+      else
         render :new
       end
     end

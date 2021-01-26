@@ -13,8 +13,7 @@ class UsersController < ApplicationController
   end
 
   def order_history
-    @orders = Order.where(user_id: current_user.id).order(id: "DESC")
+    @orders = Order.where(user_id: current_user.id).order(id: 'DESC')
     @orders = @orders.page(params[:page]).per(5)
   end
-
 end

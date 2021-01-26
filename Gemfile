@@ -44,9 +44,9 @@ gem 'jp_prefecture'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
+gem 'payjp'
 gem 'rails-i18n'
 gem 'ransack'
-gem 'payjp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -73,6 +73,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

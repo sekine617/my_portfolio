@@ -10,24 +10,26 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   validates :last_name, presence: true
+
   validates :first_name, presence: true
 
   validates :last_hurigana,
             presence: true,
             format: {
               with: /\A[\p{katakana}\p{blank}ー－]+\z/,
-              message: 'はカタカナで入力して下さい'
+              message: 'はカタカナで入力して下さい。'
             }
 
   validates :first_hurigana,
             presence: true,
             format: {
               with: /\A[\p{katakana}\p{blank}ー－]+\z/,
-              message: 'はカタカナで入力して下さい'
+              message: 'はカタカナで入力して下さい。'
             }
 
   validates :password,
-            length: { minimum: 8 }
+            presence: true,
+            length: { minimum: 6 }
 
   validates :email,
             presence: true,
