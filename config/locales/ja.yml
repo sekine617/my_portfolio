@@ -16,6 +16,12 @@ ja:
       comment:
         name: 名前
         comment: コメント
+      product:
+        name: 商品名
+        price: 価格
+        image: 商品画像
+        description: 商品説明
+        quantity_per_day: 1日の提供数
   views:
     pagination:
       first: 最初

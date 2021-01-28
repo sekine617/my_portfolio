@@ -10,9 +10,10 @@ RSpec.describe User, type: :model do
       expect(@user.valid?).to eq(true)
     end
 
-    it 'emailが空のとき無効であること' do
-      @user.email = ''
-      expect(@user.valid?).to eq(false)
+    it 'メールアドレスがない場合、無効であること' do
+      user = FactoryBot.build(:user, email: nil)
+      user.valid?
+      expect(user.valid?).to eq(false)
     end
 
     it "名がない場合、無効であること" do
@@ -21,7 +22,7 @@ RSpec.describe User, type: :model do
       expect(user.errors[:first_name]).to include("が入力されていません。")
     end
 
-        it "姓がない場合、無効であること" do
+    it "姓がない場合、無効であること" do
       user = FactoryBot.build(:user, last_name: nil)
       user.valid?
       expect(user.errors[:last_name]).to include("が入力されていません。")

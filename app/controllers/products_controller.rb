@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
       flash[:notice] = "「#{product.name}」を作成しました"
       redirect_to product
     else
-      redirect_to :back, flash: {
+      redirect_back fallback_location: new_product_path, flash: {
         product: product,
         error_messages: product.errors.full_messages
       }

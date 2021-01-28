@@ -1,11 +1,31 @@
 class OrdersController < ApplicationController
   before_action :set_order
+  before_action :authenticate_user!
+
 
   def new
     @order = Order.new
   end
 
   def confirm
+    @order_product_in_samedate = Order.joins(:order_products).where(receipt_date: order_params[:receipt_date]).group("order_products.product_id").sum(:quantity)
+    @cart_items.each do |cart_item|
+      @quantity_per_day = Product.find(cart_item.id).quantity_per_day.to_i
+      @ordered_quantity = @order_product_in_samedate[cart_item.product_id].to_i
+      @stock = @quantity_per_day - @ordered_quantity
+      @new_order_quantity = cart_item.quantity
+      if @stock <= 0
+        flash[:alert] = "#{cart_item.product.name}は指定の希望日ではご注文できません。"
+        redirect_to new_order_path and return
+      else
+        if @new_order_quantity > @stock
+         flash[:alert] = "#{cart_item.product.name}の#{@stock}以下でご注文ください。"
+         binding.pry
+         redirect_to new_order_path and return
+        end
+      end
+    end
+
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     render :new if @order.invalid?
@@ -20,7 +40,6 @@ class OrdersController < ApplicationController
     if params[:back]
       redirect_to new_order_path
     else
-      binding.pry
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       Payjp::Charge.create(
         amount: order_params[:total_price],
