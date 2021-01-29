@@ -2,52 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .p-review__formBox {
-    margin: 30px auto;
-    border: 5px solid #e8e8e8;
-    padding: 25px;
-    border-radius: 14px;
-  }
-  
-  .p-review__formTitle {
-    border-bottom: 2px solid #dfdfdf;
-    padding-bottom: 5px;
-  }
-  
-  .p-review__listTitle {
-    border-bottom: 2px solid #dfdfdf;
-    padding-bottom: 5px;
-  }
-  
-  .p-review__list {
-    margin: 38px 0;
-    padding: 20px;
-  }
-  
-  .p-review__item {
-    padding: 18px;
-    border-bottom: 2px dotted #dfdfdf;
-  }
-  
-  .p-review__bottomLine {
-    font-size: 15px;
-    text-align: right;
-  
-    > span {
-      font-size: 14px;
-      margin: 0 12px;
-    }
-  }
+  margin: 30px auto;
+  border: 5px solid #e8e8e8;
+  padding: 25px;
+  border-radius: 14px;
+}
 
-  .rating-box .ratings .fa {
-    font-size: 30px;
-    color:#ffcc00;
-    cursor: pointer;
+.p-review__formTitle {
+  border-bottom: 2px solid #dfdfdf;
+  padding-bottom: 5px;
+}
+
+.p-review__listTitle {
+  border-bottom: 2px solid #dfdfdf;
+  padding-bottom: 5px;
+}
+
+.p-review__list {
+  margin: 38px 0;
+  padding: 20px;
+}
+
+.p-review__item {
+  padding: 18px;
+  border-bottom: 2px dotted #dfdfdf;
+}
+
+.p-review__bottomLine {
+  font-size: 15px;
+  text-align: right;
+
+  span {
+    font-size: 14px;
+    margin: 0 12px;
   }
-  
-  .main-rating {
-    display: flex;
-  }
-  
-  .rating-value-display {
-    font-size: 20px;
-  }
+}
+
+.rating-box .ratings .fa {
+  font-size: 30px;
+  color: #ffcc00;
+  cursor: pointer;
+}
+
+.main-rating {
+  display: flex;
+}
+
+.rating-value-display {
+  font-size: 20px;
+}
