@@ -22,6 +22,13 @@ ja:
         image: 商品画像
         description: 商品説明
         quantity_per_day: 1日の提供数
+      order:
+        receipt_date: 受け取り希望日
+        receipt_time: 受け取り希望時間
+        postcode: 郵便番号
+        prefecture_code: 都道府県
+        address_city: 市区町村
+        address_street: 番地
   views:
     pagination:
       first: 最初

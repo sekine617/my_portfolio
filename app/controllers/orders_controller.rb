@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
       else
         if @new_order_quantity > @stock
          flash[:alert] = "#{cart_item.product.name}の#{@stock}以下でご注文ください。"
-         binding.pry
          redirect_to new_order_path and return
         end
       end
@@ -28,7 +27,11 @@ class OrdersController < ApplicationController
 
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    render :new if @order.invalid?
+    if @order.invalid?
+      binding.pry
+      flash[:error_messages] = @order.errors.full_messages
+      render :new
+    end
     @order.order_products.build
   end
 

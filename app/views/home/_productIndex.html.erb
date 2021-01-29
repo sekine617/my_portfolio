@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><%= product.name %></h5>
-                    <p class="card-title"><i class="fas fa-store-alt mr-2"></i><%= product.shop.name %></p>
+                    <h6 class="card-title"><i class="fas fa-store-alt mr-2"></i><%= link_to  "#{product.shop.name}", shop_path(product.shop.id), class: ''%></h6><br>
                     <div class="text-right">
                         <%= link_to "詳細", product, class: 'btn btn-outline-info w-10' %>
                     </div>

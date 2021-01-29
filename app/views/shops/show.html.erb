@@ -1,49 +1,24 @@
   <section class="jumbotron text-center">
-      <div class="container">
-          <h1 class="jumbotron-heading"><%= @shop.name %></h1>
-          <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-          <p>
-              <a href="#" class="btn btn-primary my-2">Main call to action</a>
-              <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>
+      <div class="shop-img">
       </div>
   </section>
 
-  <div class="card border-light">
-      <h4 class="card-header">店舗情報</h4>
-      <div class="container shop_table">
-          <table class="shop-table">
-              <tr class="shop-table-tr">
-                  <th class="shop-table-th">店舗名</th>
-                  <td class="shop-table-td"><%= @shop.name %></td>
-              </tr>
-              <tr class="shop-table-tr">
-                  <th class="shop-table-th">住所</th>
-                  <td class="shop-table-td"><%= @shop.address %></td>
-              </tr>
-              <tr class="shop-table-tr">
-                  <th class="shop-table-th">メールアドレス</th>
-                  <td class="shop-table-td"><%= @shop.email %></td>
-              </tr>
-              <tr class="shop-table-tr">
-                  <th class="shop-table-th">電話番号</th>
-                  <td class="shop-table-td"><%= @shop.phone_number %></td>
-              </tr>
-              <tr class="shop-table-tr tr-last">
-                  <th class="shop-table-th">営業時間</th>
-                  <td class="shop-table-td"><%= @shop.opening_hours %></td>
-              </tr>
-          </table>
-      </div>
+  <div class="bg-white">
+  <div class="container text-center">
+  <h2 class="py-5"><%= shop.name %></h2>
   </div>
-
-  <div class="album py-5">
-      <div class="container">
+  </div>
+  <div class="contents">
+<%= render partial: 'shopInfo', locals: {shop: @shop} %>
+</div>
+  <div class="contents">
+  <div class="album pt-5">
+      <div class="">
           <div class="card border-light mb-3">
               <div class="card-header">
-                  <h5><%= @shop.name %>の商品一覧<h5>
+                  <h4><%= @shop.name %>の商品一覧<h4>
               </div>
-              <div class="card-body">
+              <div class="card-body container">
                   <div class="row">
                       <%= render partial: 'products/productIndex', locals: { products: @products } %>
                   </div>
@@ -51,4 +26,5 @@
               <%= paginate @products %>
           </div>
       </div>
+  </div>
   </div>
