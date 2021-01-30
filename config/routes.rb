@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   get 'orders/confirm', to: 'orders#confirm'
   get 'orders/complete', to: 'orders#complete'
   post 'orders/back', to: 'orders#back'
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  resources :users, only: %i[edit]
+  post '/users/:id/update', to: 'users#update', as: 'update_user'
   get '/mypage' => 'users#show'
   get     'mypage/like', to: 'users#like'
   get     'mypage/review', to: 'users#review'

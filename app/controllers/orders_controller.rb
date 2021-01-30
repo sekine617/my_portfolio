@@ -52,6 +52,9 @@ class OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.user_id = current_user.id
       if @order.save
+        #if params[:new_address]
+
+        #end
         current_cart.destroy
         render :complete
       else

@@ -28,6 +28,7 @@
   background-color: #fafafa;
   max-width: 720px;
 }
+
 .head {
   -webkit-border-radius: 6px 6px 0px 0px;
   -moz-border-radius: 6px 6px 0px 0px;
@@ -35,6 +36,7 @@
   background-color: #17a2b8;
   color: #fafafa;
 }
+
 .head-text {
   text-align: center;
   padding: 18px 0 18px 0;
@@ -82,6 +84,7 @@ textarea {
   width: 30%;
   color: #fff;
 }
+
 button:hover,
 .button:hover {
   background: #19a08c;
@@ -89,6 +92,7 @@ button:hover,
 
 .name-form {
   padding: 0px !important;
+
   .input-name {
     max-width: 238px;
   }
@@ -110,4 +114,9 @@ button:hover,
 
 .mypage-contents {
   background-color: white;
+}
+
+//mypage
+.edit-btn {
+  margin-left: 120px;
 }

@@ -22,7 +22,7 @@
         <div class="form-group row">
            <label class="col-sm-4 col-form-label"><h5>お届け先住所</h5></label>
            <div class="col-sm-8">
-              <h5 class="col-form-label"><%= @order.postcode %></h5><br>
+              <h5 class="col-form-label">〒<%= @order.postcode %></h5><br>
               <h5 class="col-form-label">
               <%= @order.prefecture_name %>
               <%= @order.address_city %>
