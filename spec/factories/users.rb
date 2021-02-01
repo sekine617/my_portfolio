@@ -7,4 +7,11 @@ FactoryBot.define do
     sequence(:email) { |n| "TEST#{n}@email.com" }
     sequence(:password) { '12345678' }
   end
+
+  factory :edit_address do
+    postcode { '11111' }
+    prefecture_code { '11' }
+    address_city { 'city' }
+    address_street { 'street' }
+  end
 end

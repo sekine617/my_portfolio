@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     if @order.invalid?
-      binding.pry
       flash[:error_messages] = @order.errors.full_messages
       render :new
     end
@@ -53,7 +52,6 @@ class OrdersController < ApplicationController
       @order.user_id = current_user.id
       if @order.save
         if @address.blank?
-          binding.pry
           @address = Address.new(postcode: order_params[:postcode], prefecture_code: order_params[:prefecture_code], address_city: order_params[:address_city], address_street: order_params[:address_street], address_building: order_params[:address_building])
           @address.user_id = current_user.id
           @address.save

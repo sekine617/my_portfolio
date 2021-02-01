@@ -1,8 +1,11 @@
 FactoryBot.define do
   factory :order do
-    quantity { 'MyString' }
-    product { '' }
+    #quantity { '1' }
+    postcode { '11111' }
+    prefecture_code { '11' }
+    address_city { 'city' }
+    address_street { 'street' }
     receipt_date { '2021-01-07' }
-    receipt { '2021-01-07 13:53:08' }
+    receipt_time { 1 }
   end
 end
