@@ -2,21 +2,32 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[show like review order_history edit update]
   def show
     @user = User.find(current_user.id)
-    binding.pry
+    @address = Address.find_by(user_id: current_user.id)
   end
 
   def edit
   end
 
   def update
-    @user = User.find(current_user.id)
-    binding.pry
-    if @user.valid?
-      binding.pry
-      @user.update(user_params)
+    @address = Address.find_by(user_id: current_user.id)
+    if @address.present?
+      @address.user_id = current_user.id
+      @address.update(address_params)
+      flash[:notice] = '住所を登録しました。'
       redirect_to mypage_path
     else
-      render :edit
+      @address = Address.new(address_params)
+      @address.user_id = current_user.id
+      if @address.save
+        flash[:notice] = '住所を変更しました。'
+        redirect_to mypage_path
+      else
+        binding.pry
+        #redirect_back fallback_location: @user., flash: {
+        #review: @review,
+        #error_messages: @review.errors.full_messages
+      #}
+      end
     end
   end
 
@@ -34,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
+  def address_params
     params.permit(:postcode, :prefecture_code, :address_city, :address_street, :address_building)
   end
 end

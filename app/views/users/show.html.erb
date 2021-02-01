@@ -16,18 +16,18 @@
                 </div>
                 <div class="form-group">
                   <label>お届け先住所</label>
-                   <div class="text-left">
-                     <% if @user.postcode.present? %>
-                        〒<%= @user.postcode %><br>
-                       <%= @order.prefecture_name %>
-                       <%= @order.address_city %>
-                       <%= @order.address_street %>
-                       <%= @order.address_building %><br>
+                   <div class="text-left mb-2">
+                     <% if @address.present? %>
+                        〒<%= @address.postcode %><br>
+                       <%= @address.prefecture_name %>
+                       <%= @address.address_city %>
+                       <%= @address.address_street %>
+                       <%= @address.address_building %><br>
                        <% else %>
                        <p>現在住所は登録されていません</p>
                      <% end %>
+                   </div>
                       <%= link_to '変更する', edit_user_path(current_user.id), class: 'edit-btn' %>
-                  </div>
                 </div>
                 <hr>
                 <div class="form-group">

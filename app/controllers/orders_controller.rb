@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order
+  before_action :set_address
   before_action :authenticate_user!
-
 
   def new
     @order = Order.new
@@ -93,5 +93,9 @@ class OrdersController < ApplicationController
     (1..14).each do |i|
       @days_array.push({ id: (@today + i.day), name: (@today + i.day).strftime('%-m月 %-d日') })
     end
+  end
+
+  def set_address
+        @address = Address.find_by(user_id: current_user.id)
   end
 end

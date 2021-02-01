@@ -1,0 +1,39 @@
+  <%= render 'shared/error_messages' %>
+
+<%= form_with url: update_user_path(current_user.id),local: true  do |f| %>
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">郵便番号</label>
+    <div class="col-sm-9">
+      <%= f.text_field :postcode , id: "user_postcode", class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">都道府県</label>
+    <div class="col-sm-9">
+       <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', id: 'user_prefecture_code' %>  
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">市区町村</label>
+    <div class="col-sm-9">
+    <%= f.text_field :address_city , id: "user_address_city", class: 'form-control' %>   
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">番地</label>
+    <div class="col-sm-9">
+    <%= f.text_field :address_street , id: "user_address_street" , class: 'form-control'%>   
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 col-form-label">建物名</label>
+    <div class="col-sm-9">
+    <%= f.text_field :address_building , class: 'form-control' %>   
+    </div>
+  </div>
+  <%= f.submit '変更', class: 'btn btn-primary' %>
+  <% end %>

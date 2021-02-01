@@ -10,15 +10,15 @@ if Rails.env == 'development'
   #     Shop.create!(name: "ケーキ屋#{i}", email: "cake#{i}@cake.jp", auth_id: "#{i}" ,password: "password#{i}", phone_number: "0120#{i}00000", opening_hours: "10:00~19:00", address: "東京",)
   #     end
 
-  # Shop.create!(name: 'ラミティエル', email: 'lamitiel@gmail.com', auth_id: '12345678', password: '87654321',
-  # phone_number: '0120-000-000', opening_hours: '10:00~19:00', address: '東京都葛飾区新宿9丁目47 20番10号')
+   Shop.create!(name: 'ラミティエル', email: 'lamitiel@gmail.com', auth_id: '12345678', password: '87654321',
+   phone_number: '0120-000-000', opening_hours: '10:00~19:00', address: '東京都葛飾区新宿9丁目47 20番10号')
 
-  # array = %w[チョコレート フルーツ タルト デコレーションケーキ カットケーキ イチゴ 生クリーム カスタードクリーム]
-  # array.each do |tag|
-  #  tag_list = ActsAsTaggableOn::Tag.new
-  #  tag_list.name = tag
-  #  tag_list.save
-  # end
+   array = %w[チョコレート フルーツ タルト デコレーションケーキ カットケーキ イチゴ 生クリーム カスタードクリーム]
+   array.each do |tag|
+    tag_list = ActsAsTaggableOn::Tag.new
+    tag_list.name = tag
+    tag_list.save
+   end
 
   #   (1..5).each do |i|
   #     Product.create!(name: 'モンブラン', price: 600, description: '国産栗を使用したモンブラン', image: 'img04.jpeg', quantity_per_day: i,
