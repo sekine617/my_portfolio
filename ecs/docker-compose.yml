@@ -1,0 +1,37 @@
+version: 2
+services:
+  app:
+    image: 285893382878.dkr.ecr.ap-northeast-1.amazonaws.com/sample-app-rails
+    command: bash -c "bundle exec rails db:migrate && bundle exec rails assets:precompile && bundle exec puma -C config/puma.rb"
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: Rails.application.credentials.secret_key_base
+      RAILS_MASTER_KEY: c10ef7ed6ece8ffc8afd650df2236ba6
+      DATABASE_NAME: sample_app_production
+      DATABASE_USERNAME: admin
+      DATABASE_PASSWORD: E74bjhRadb
+      DATABASE_HOST: sample-app-db.cbyevveh3bli.ap-northeast-1.rds.amazonaws.com
+      TZ: Japan
+    working_dir: /sample-app
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ap-northeast-1
+        awslogs-group: sample-app-production/app
+        awslogs-stream-prefix: sample-app-production
+  nginx:
+    image: 285893382878.dkr.ecr.ap-northeast-1.amazonaws.com/sample-app-nginx
+    ports:
+      - 80:80
+    mem_limit: 268435456
+    links:
+      - app
+    volumes_from:
+      - app
+    working_dir: /sample-app
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ap-northeast-1
+        awslogs-group: sample-app-production/nginx
+        awslogs-stream-prefix: sample-app-production
